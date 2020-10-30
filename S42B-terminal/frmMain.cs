@@ -291,22 +291,28 @@ namespace S42B_terminal
 				}
 			}
 
-			model.Axes.Add(new LinearAxis() { Position = AxisPosition.Right, Title = "Derivative units", Key = "default", EndPosition = 0.45 });
-			model.Axes.Add(new LinearAxis() { Position = AxisPosition.Right, Title = "Position", Key = "position", StartPosition = 0.55 });
-			model.Axes.Add(new LinearAxis() { Position = AxisPosition.Left, Title = "Position Error", Key = "posError", StartPosition = 0.55,
+			model.Axes.Add(new LinearAxis() { Position = AxisPosition.Right, Title = "Velocity and Integral (derivative units)", Key = "default", EndPosition = 0.45 });
+			model.Axes.Add(new LinearAxis() { Position = AxisPosition.Right, Title = "Position (16384th of a rotation)", Key = "position", StartPosition = 0.55 });
+			model.Axes.Add(new LinearAxis() { Position = AxisPosition.Left, Title = "Position Error (16384th of a rotation)", Key = "posError", StartPosition = 0.55,
 				MajorGridlineStyle = LineStyle.Automatic,
 				Maximum = 300,
 				Minimum = -300,
 				MinorGridlineStyle = LineStyle.Dot,
 				MajorStep = 100
 			});
-			model.Axes.Add(new LinearAxis() { Position = AxisPosition.Left, Title = "Velocity units", Key = "velError", EndPosition = 0.45,
+			model.Axes.Add(new LinearAxis() { Position = AxisPosition.Left, Title = "Velocity Error (derivative units)", Key = "velError", EndPosition = 0.45,
 				MajorGridlineStyle = LineStyle.Automatic,
 				Maximum = 3000,
 				Minimum = -3000,
 				MinorGridlineStyle = LineStyle.Dot,
 				MajorStep = 1000
 			});
+
+			var e_max = pointLog.Max(x => x.PosError);
+			var e_min = pointLog.Min(x => x.PosError);
+			var e_rms = Math.Sqrt(pointLog.Average(x => Math.Pow(x.PosError, 2)));
+
+			var e_text = string.Format($"E_max: {e_max} E_min: {e_min} E_rms: {e_rms}");
 
 			Invoke(new Action(() => {
 				plotViewPID.Model = model;
