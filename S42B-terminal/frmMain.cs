@@ -193,6 +193,11 @@ namespace S42B_terminal
 									packet[7] = 0x16;
 
 									serialPortDriver.Write(packet, 0, packet.Length);
+
+									BeginInvoke(new Action(() =>
+									{
+										refreshChart();
+									}));
 								}
 							}
 						}
@@ -220,6 +225,11 @@ namespace S42B_terminal
 			}
 			
 		}
+
+		private void refreshChart()
+		{
+		}
+
 
 		int? marlinQueueLastLineNo = null;
 		ConcurrentQueue<string> marlinCommandQueue = new ConcurrentQueue<string>();

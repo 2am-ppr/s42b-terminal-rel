@@ -57,6 +57,12 @@
 			this.btnDiscMarlin = new System.Windows.Forms.Button();
 			this.txtGcodePrep = new System.Windows.Forms.TextBox();
 			this.label8 = new System.Windows.Forms.Label();
+			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.tabLog = new System.Windows.Forms.TabPage();
+			this.tabChart = new System.Windows.Forms.TabPage();
+			this.tabControl1.SuspendLayout();
+			this.tabLog.SuspendLayout();
+			this.tabChart.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// textBox1
@@ -64,10 +70,10 @@
 			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox1.Location = new System.Drawing.Point(12, 230);
+			this.textBox1.Location = new System.Drawing.Point(0, 0);
 			this.textBox1.Multiline = true;
 			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(796, 208);
+			this.textBox1.Size = new System.Drawing.Size(788, 182);
 			this.textBox1.TabIndex = 0;
 			// 
 			// cmbCommand
@@ -342,11 +348,46 @@
 			this.label8.TabIndex = 18;
 			this.label8.Text = "Test GCODE";
 			// 
+			// tabControl1
+			// 
+			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tabControl1.Controls.Add(this.tabLog);
+			this.tabControl1.Controls.Add(this.tabChart);
+			this.tabControl1.Location = new System.Drawing.Point(12, 230);
+			this.tabControl1.Name = "tabControl1";
+			this.tabControl1.SelectedIndex = 0;
+			this.tabControl1.Size = new System.Drawing.Size(796, 208);
+			this.tabControl1.TabIndex = 24;
+			// 
+			// tabLog
+			// 
+			this.tabLog.Controls.Add(this.textBox1);
+			this.tabLog.Location = new System.Drawing.Point(4, 22);
+			this.tabLog.Name = "tabLog";
+			this.tabLog.Padding = new System.Windows.Forms.Padding(3);
+			this.tabLog.Size = new System.Drawing.Size(788, 182);
+			this.tabLog.TabIndex = 0;
+			this.tabLog.Text = "Log";
+			this.tabLog.UseVisualStyleBackColor = true;
+			// 
+			// tabChart
+			// 
+			this.tabChart.Controls.Add(this.chrtPid);
+			this.tabChart.Location = new System.Drawing.Point(4, 22);
+			this.tabChart.Name = "tabChart";
+			this.tabChart.Padding = new System.Windows.Forms.Padding(3);
+			this.tabChart.Size = new System.Drawing.Size(788, 182);
+			this.tabChart.TabIndex = 1;
+			this.tabChart.Text = "Chart";
+			this.tabChart.UseVisualStyleBackColor = true;
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(820, 450);
+			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.btnDiscMarlin);
 			this.Controls.Add(this.btnDiscDriver);
 			this.Controls.Add(this.txtMarlinResponse);
@@ -372,10 +413,13 @@
 			this.Controls.Add(this.cmbValue);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.cmbCommand);
-			this.Controls.Add(this.textBox1);
 			this.Name = "frmMain";
 			this.Text = "S42B Terminal";
 			this.Load += new System.EventHandler(this.Form1_Load);
+			this.tabControl1.ResumeLayout(false);
+			this.tabLog.ResumeLayout(false);
+			this.tabLog.PerformLayout();
+			this.tabChart.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -410,6 +454,9 @@
 		private System.Windows.Forms.Button btnDiscMarlin;
 		private System.Windows.Forms.TextBox txtGcodePrep;
 		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.TabControl tabControl1;
+		private System.Windows.Forms.TabPage tabLog;
+		private System.Windows.Forms.TabPage tabChart;
 	}
 }
 
