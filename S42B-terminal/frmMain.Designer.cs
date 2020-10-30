@@ -374,7 +374,6 @@
 			// 
 			// tabChart
 			// 
-			this.tabChart.Controls.Add(this.chrtPid);
 			this.tabChart.Location = new System.Drawing.Point(4, 22);
 			this.tabChart.Name = "tabChart";
 			this.tabChart.Padding = new System.Windows.Forms.Padding(3);
