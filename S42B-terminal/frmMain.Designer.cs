@@ -59,11 +59,8 @@
 			this.label8 = new System.Windows.Forms.Label();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabLog = new System.Windows.Forms.TabPage();
-			this.tabChart = new System.Windows.Forms.TabPage();
-			this.plotViewPID = new OxyPlot.WindowsForms.PlotView();
 			this.tabControl1.SuspendLayout();
 			this.tabLog.SuspendLayout();
-			this.tabChart.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// textBox1
@@ -74,7 +71,7 @@
 			this.textBox1.Location = new System.Drawing.Point(0, 0);
 			this.textBox1.Multiline = true;
 			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(788, 182);
+			this.textBox1.Size = new System.Drawing.Size(881, 297);
 			this.textBox1.TabIndex = 0;
 			// 
 			// cmbCommand
@@ -85,7 +82,7 @@
 			this.cmbCommand.FormattingEnabled = true;
 			this.cmbCommand.Location = new System.Drawing.Point(77, 37);
 			this.cmbCommand.Name = "cmbCommand";
-			this.cmbCommand.Size = new System.Drawing.Size(346, 21);
+			this.cmbCommand.Size = new System.Drawing.Size(439, 21);
 			this.cmbCommand.TabIndex = 1;
 			this.cmbCommand.SelectionChangeCommitted += new System.EventHandler(this.cmbCommand_SelectionChangeCommitted);
 			// 
@@ -102,7 +99,7 @@
 			// 
 			this.cmbValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.cmbValue.FormattingEnabled = true;
-			this.cmbValue.Location = new System.Drawing.Point(469, 37);
+			this.cmbValue.Location = new System.Drawing.Point(562, 37);
 			this.cmbValue.Name = "cmbValue";
 			this.cmbValue.Size = new System.Drawing.Size(121, 21);
 			this.cmbValue.TabIndex = 3;
@@ -111,7 +108,7 @@
 			// 
 			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(429, 40);
+			this.label2.Location = new System.Drawing.Point(522, 40);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(34, 13);
 			this.label2.TabIndex = 4;
@@ -125,13 +122,13 @@
 			this.cmbSerialDriver.FormattingEnabled = true;
 			this.cmbSerialDriver.Location = new System.Drawing.Point(77, 10);
 			this.cmbSerialDriver.Name = "cmbSerialDriver";
-			this.cmbSerialDriver.Size = new System.Drawing.Size(346, 21);
+			this.cmbSerialDriver.Size = new System.Drawing.Size(439, 21);
 			this.cmbSerialDriver.TabIndex = 5;
 			// 
 			// btnConnect
 			// 
 			this.btnConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnConnect.Location = new System.Drawing.Point(733, 8);
+			this.btnConnect.Location = new System.Drawing.Point(826, 8);
 			this.btnConnect.Name = "btnConnect";
 			this.btnConnect.Size = new System.Drawing.Size(75, 23);
 			this.btnConnect.TabIndex = 6;
@@ -149,7 +146,7 @@
             "38400",
             "115200",
             "2000000"});
-			this.cmbBaudDriver.Location = new System.Drawing.Point(495, 10);
+			this.cmbBaudDriver.Location = new System.Drawing.Point(588, 10);
 			this.cmbBaudDriver.Name = "cmbBaudDriver";
 			this.cmbBaudDriver.Size = new System.Drawing.Size(95, 21);
 			this.cmbBaudDriver.TabIndex = 7;
@@ -158,7 +155,7 @@
 			// 
 			this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnSend.Enabled = false;
-			this.btnSend.Location = new System.Drawing.Point(733, 37);
+			this.btnSend.Location = new System.Drawing.Point(826, 37);
 			this.btnSend.Name = "btnSend";
 			this.btnSend.Size = new System.Drawing.Size(75, 23);
 			this.btnSend.TabIndex = 8;
@@ -170,7 +167,7 @@
 			// 
 			this.lblLimits.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblLimits.AutoSize = true;
-			this.lblLimits.Location = new System.Drawing.Point(596, 40);
+			this.lblLimits.Location = new System.Drawing.Point(689, 40);
 			this.lblLimits.Name = "lblLimits";
 			this.lblLimits.Size = new System.Drawing.Size(27, 13);
 			this.lblLimits.TabIndex = 9;
@@ -189,7 +186,7 @@
 			// 
 			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(429, 13);
+			this.label4.Location = new System.Drawing.Point(522, 13);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(58, 13);
 			this.label4.TabIndex = 11;
@@ -217,7 +214,7 @@
             "250000",
             "115200",
             "57600"});
-			this.cmbBaudMarlin.Location = new System.Drawing.Point(495, 64);
+			this.cmbBaudMarlin.Location = new System.Drawing.Point(588, 64);
 			this.cmbBaudMarlin.Name = "cmbBaudMarlin";
 			this.cmbBaudMarlin.Size = new System.Drawing.Size(95, 21);
 			this.cmbBaudMarlin.TabIndex = 14;
@@ -225,7 +222,7 @@
 			// btnConnectMarlin
 			// 
 			this.btnConnectMarlin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnConnectMarlin.Location = new System.Drawing.Point(733, 62);
+			this.btnConnectMarlin.Location = new System.Drawing.Point(826, 62);
 			this.btnConnectMarlin.Name = "btnConnectMarlin";
 			this.btnConnectMarlin.Size = new System.Drawing.Size(75, 23);
 			this.btnConnectMarlin.TabIndex = 13;
@@ -241,7 +238,7 @@
 			this.cmbSerialMarlin.FormattingEnabled = true;
 			this.cmbSerialMarlin.Location = new System.Drawing.Point(77, 64);
 			this.cmbSerialMarlin.Name = "cmbSerialMarlin";
-			this.cmbSerialMarlin.Size = new System.Drawing.Size(346, 21);
+			this.cmbSerialMarlin.Size = new System.Drawing.Size(439, 21);
 			this.cmbSerialMarlin.TabIndex = 12;
 			// 
 			// txtGcodeTest
@@ -303,14 +300,14 @@
 			this.txtMarlinResponse.Location = new System.Drawing.Point(435, 110);
 			this.txtMarlinResponse.Multiline = true;
 			this.txtMarlinResponse.Name = "txtMarlinResponse";
-			this.txtMarlinResponse.Size = new System.Drawing.Size(373, 114);
+			this.txtMarlinResponse.Size = new System.Drawing.Size(466, 114);
 			this.txtMarlinResponse.TabIndex = 22;
 			// 
 			// btnDiscDriver
 			// 
 			this.btnDiscDriver.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnDiscDriver.Enabled = false;
-			this.btnDiscDriver.Location = new System.Drawing.Point(652, 8);
+			this.btnDiscDriver.Location = new System.Drawing.Point(745, 8);
 			this.btnDiscDriver.Name = "btnDiscDriver";
 			this.btnDiscDriver.Size = new System.Drawing.Size(75, 23);
 			this.btnDiscDriver.TabIndex = 23;
@@ -322,7 +319,7 @@
 			// 
 			this.btnDiscMarlin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnDiscMarlin.Enabled = false;
-			this.btnDiscMarlin.Location = new System.Drawing.Point(652, 62);
+			this.btnDiscMarlin.Location = new System.Drawing.Point(745, 62);
 			this.btnDiscMarlin.Name = "btnDiscMarlin";
 			this.btnDiscMarlin.Size = new System.Drawing.Size(75, 23);
 			this.btnDiscMarlin.TabIndex = 23;
@@ -355,11 +352,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.tabControl1.Controls.Add(this.tabLog);
-			this.tabControl1.Controls.Add(this.tabChart);
 			this.tabControl1.Location = new System.Drawing.Point(12, 230);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(796, 208);
+			this.tabControl1.Size = new System.Drawing.Size(889, 323);
 			this.tabControl1.TabIndex = 24;
 			// 
 			// tabLog
@@ -368,42 +364,16 @@
 			this.tabLog.Location = new System.Drawing.Point(4, 22);
 			this.tabLog.Name = "tabLog";
 			this.tabLog.Padding = new System.Windows.Forms.Padding(3);
-			this.tabLog.Size = new System.Drawing.Size(788, 182);
+			this.tabLog.Size = new System.Drawing.Size(881, 297);
 			this.tabLog.TabIndex = 0;
 			this.tabLog.Text = "Log";
 			this.tabLog.UseVisualStyleBackColor = true;
-			// 
-			// tabChart
-			// 
-			this.tabChart.Controls.Add(this.plotViewPID);
-			this.tabChart.Location = new System.Drawing.Point(4, 22);
-			this.tabChart.Name = "tabChart";
-			this.tabChart.Padding = new System.Windows.Forms.Padding(3);
-			this.tabChart.Size = new System.Drawing.Size(788, 182);
-			this.tabChart.TabIndex = 1;
-			this.tabChart.Text = "Chart";
-			this.tabChart.UseVisualStyleBackColor = true;
-			// 
-			// plotViewPID
-			// 
-			this.plotViewPID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.plotViewPID.Location = new System.Drawing.Point(6, 6);
-			this.plotViewPID.Name = "plotViewPID";
-			this.plotViewPID.PanCursor = System.Windows.Forms.Cursors.Hand;
-			this.plotViewPID.Size = new System.Drawing.Size(776, 170);
-			this.plotViewPID.TabIndex = 0;
-			this.plotViewPID.Text = "plotView1";
-			this.plotViewPID.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
-			this.plotViewPID.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
-			this.plotViewPID.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
 			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(820, 450);
+			this.ClientSize = new System.Drawing.Size(913, 565);
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.btnDiscMarlin);
 			this.Controls.Add(this.btnDiscDriver);
@@ -436,7 +406,6 @@
 			this.tabControl1.ResumeLayout(false);
 			this.tabLog.ResumeLayout(false);
 			this.tabLog.PerformLayout();
-			this.tabChart.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -473,8 +442,6 @@
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tabLog;
-		private System.Windows.Forms.TabPage tabChart;
-		private OxyPlot.WindowsForms.PlotView plotViewPID;
 	}
 }
 

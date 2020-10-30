@@ -231,91 +231,24 @@ namespace S42B_terminal
 			
 		}
 
+		int pageSeq = 1;
+
 		private void refreshChart()
 		{
-			var model = new PlotModel()
+			if (!pointLog.Any())
 			{
-				Title = "PID Tune"
-			};
-
-			var startPos = pointLog.First().PosTarget;
-
-			var header = pointLog.TakeWhile(x => Math.Abs(x.PosError) < 6 && x.PosTarget == startPos).Count();
-			pointLog.RemoveRange(0, header);
-
-			var endPos = pointLog.Last().PosTarget;
-			var tail = pointLog.Reverse<TestPoint>().TakeWhile(x => Math.Abs(x.PosError) < 6 && x.PosTarget == endPos).Count();
-			pointLog.RemoveRange(pointLog.Count - tail, tail);
-
-
-			var colors = new[] { "0072bd", "d95319", "edb120", "7e2f8e", "77ac30", "4dbeee", "a2142f" };
-
-			foreach (var field in new[] { "PosMeasured", "PosTarget", "PosError", "VelMeasured", "VelTarget", "VelError", "PidI" })
-			{
-
-				var series = new LineSeries()
-				{
-					Title = field,
-					ItemsSource = pointLog,
-					DataFieldY = field,
-					DataFieldX = "Sequence"
-				};
-
-				model.Series.Add(series);
+				appendLogText("failed to log any PID datapoints");
+				return;
 			}
-			(model.Series[0] as LineSeries).YAxisKey = "position";
-			(model.Series[1] as LineSeries).YAxisKey = "position";
-			(model.Series[2] as LineSeries).YAxisKey = "posError";
-			(model.Series[5] as LineSeries).YAxisKey = "velError";
+			var control = new PidResultControl(pointLog);
 
-			for (int i = 0; i < model.Series.Count; i++)
+			BeginInvoke(new Action(() =>
 			{
-				var s = model.Series[i] as LineSeries;
-				var colorValue = UInt32.Parse(colors[i], System.Globalization.NumberStyles.HexNumber) | 0xff000000u;
-				var color = OxyColor.FromUInt32(colorValue);
-				var lightColor = OxyColor.FromUInt32(colorValue & 0x7fffffffu);
+				var tp = new TabPage(string.Format("PID {0}", pageSeq++));
+				tp.Controls.Add(control);
+				control.Dock = DockStyle.Fill;
 
-				if (s.DataFieldY.EndsWith("Target"))
-				{
-
-					//s.MarkerType = MarkerType.Cross;
-					//s.MarkerFill = OxyColors.Transparent;
-					//s.MarkerStroke = OxyColors.Automatic;
-					//s.LineStyle = LineStyle.None;
-					//s.Color = OxyColors.Transparent;
-					s.Color = color;
-					s.LineStyle = LineStyle.Dot;
-				} else
-				{
-					s.Color = color;
-				}
-			}
-
-			model.Axes.Add(new LinearAxis() { Position = AxisPosition.Right, Title = "Velocity and Integral (derivative units)", Key = "default", EndPosition = 0.45 });
-			model.Axes.Add(new LinearAxis() { Position = AxisPosition.Right, Title = "Position (16384th of a rotation)", Key = "position", StartPosition = 0.55 });
-			model.Axes.Add(new LinearAxis() { Position = AxisPosition.Left, Title = "Position Error (16384th of a rotation)", Key = "posError", StartPosition = 0.55,
-				MajorGridlineStyle = LineStyle.Automatic,
-				Maximum = 300,
-				Minimum = -300,
-				MinorGridlineStyle = LineStyle.Dot,
-				MajorStep = 100
-			});
-			model.Axes.Add(new LinearAxis() { Position = AxisPosition.Left, Title = "Velocity Error (derivative units)", Key = "velError", EndPosition = 0.45,
-				MajorGridlineStyle = LineStyle.Automatic,
-				Maximum = 3000,
-				Minimum = -3000,
-				MinorGridlineStyle = LineStyle.Dot,
-				MajorStep = 1000
-			});
-
-			var e_max = pointLog.Max(x => x.PosError);
-			var e_min = pointLog.Min(x => x.PosError);
-			var e_rms = Math.Sqrt(pointLog.Average(x => Math.Pow(x.PosError, 2)));
-
-			var e_text = string.Format($"E_max: {e_max} E_min: {e_min} E_rms: {e_rms}");
-
-			Invoke(new Action(() => {
-				plotViewPID.Model = model;
+				tabControl1.TabPages.Add(tp);
 			}));
 		}
 
