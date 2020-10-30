@@ -12,8 +12,6 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LiveCharts;
-using LiveCharts.Wpf;
 
 namespace S42B_terminal
 {
@@ -230,24 +228,6 @@ namespace S42B_terminal
 
 		private void refreshChart()
 		{
-			chrtPid.Series = new SeriesCollection
-			{
-				new LineSeries
-				{
-					Title = "PosMeasured",
-					Values = new ChartValues<int>(pointLog.Select(x=>x.PosMeasured))
-				},
-				new LineSeries
-				{
-					Title = "PosTarget",
-					Values = new ChartValues<int>(pointLog.Select(x=>x.PosTarget)),
-				},
-				new LineSeries
-				{
-					Title = "PosError",
-					Values = new ChartValues<int>(pointLog.Select(x=>x.PosError)),
-				}
-			};
 		}
 
 

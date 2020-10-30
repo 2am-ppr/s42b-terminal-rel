@@ -60,7 +60,6 @@
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabLog = new System.Windows.Forms.TabPage();
 			this.tabChart = new System.Windows.Forms.TabPage();
-			this.chrtPid = new LiveCharts.WinForms.CartesianChart();
 			this.tabControl1.SuspendLayout();
 			this.tabLog.SuspendLayout();
 			this.tabChart.SuspendLayout();
@@ -383,18 +382,6 @@
 			this.tabChart.TabIndex = 1;
 			this.tabChart.Text = "Chart";
 			this.tabChart.UseVisualStyleBackColor = true;
-			// 
-			// chrtPid
-			// 
-			this.chrtPid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.chrtPid.Location = new System.Drawing.Point(0, 0);
-			this.chrtPid.Name = "chrtPid";
-			this.chrtPid.Size = new System.Drawing.Size(788, 179);
-			this.chrtPid.TabIndex = 0;
-			this.chrtPid.Text = "cartesianChart1";
-			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -470,7 +457,6 @@
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tabLog;
 		private System.Windows.Forms.TabPage tabChart;
-		private LiveCharts.WinForms.CartesianChart chrtPid;
 	}
 }
 
