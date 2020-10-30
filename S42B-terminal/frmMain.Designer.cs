@@ -250,7 +250,7 @@
 			this.txtGcodeTest.Name = "txtGcodeTest";
 			this.txtGcodeTest.Size = new System.Drawing.Size(150, 114);
 			this.txtGcodeTest.TabIndex = 16;
-			this.txtGcodeTest.Text = "G0 X100 ; move\r\nG4 P100 ; dwell";
+			this.txtGcodeTest.Text = "G0 X100 ; move\r\nG4 P100 ; dwell\r\nG0 X-100 ; move\r\nG4 P100 ; dwell";
 			// 
 			// label6
 			// 
