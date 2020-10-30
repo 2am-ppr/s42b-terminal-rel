@@ -60,6 +60,7 @@
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabLog = new System.Windows.Forms.TabPage();
 			this.tabChart = new System.Windows.Forms.TabPage();
+			this.plotViewPID = new OxyPlot.WindowsForms.PlotView();
 			this.tabControl1.SuspendLayout();
 			this.tabLog.SuspendLayout();
 			this.tabChart.SuspendLayout();
@@ -374,6 +375,7 @@
 			// 
 			// tabChart
 			// 
+			this.tabChart.Controls.Add(this.plotViewPID);
 			this.tabChart.Location = new System.Drawing.Point(4, 22);
 			this.tabChart.Name = "tabChart";
 			this.tabChart.Padding = new System.Windows.Forms.Padding(3);
@@ -381,6 +383,22 @@
 			this.tabChart.TabIndex = 1;
 			this.tabChart.Text = "Chart";
 			this.tabChart.UseVisualStyleBackColor = true;
+			// 
+			// plotViewPID
+			// 
+			this.plotViewPID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.plotViewPID.Location = new System.Drawing.Point(6, 6);
+			this.plotViewPID.Name = "plotViewPID";
+			this.plotViewPID.PanCursor = System.Windows.Forms.Cursors.Hand;
+			this.plotViewPID.Size = new System.Drawing.Size(776, 170);
+			this.plotViewPID.TabIndex = 0;
+			this.plotViewPID.Text = "plotView1";
+			this.plotViewPID.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+			this.plotViewPID.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+			this.plotViewPID.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -456,6 +474,7 @@
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tabLog;
 		private System.Windows.Forms.TabPage tabChart;
+		private OxyPlot.WindowsForms.PlotView plotViewPID;
 	}
 }
 

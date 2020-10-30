@@ -12,6 +12,8 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OxyPlot;
+using OxyPlot.Series;
 
 namespace S42B_terminal
 {
@@ -228,6 +230,26 @@ namespace S42B_terminal
 
 		private void refreshChart()
 		{
+			var model = new PlotModel()
+			{
+				Title = "PID Tune"
+			};
+
+			foreach (var field in new[] { "PosMeasured", "PosTarget", "PosError", "VelMeasured", "VelTarget", "VelError", "PidI" })
+			{
+
+				var series = new LineSeries()
+				{
+					Title = field,
+					ItemsSource = pointLog,
+					DataFieldY = field,
+					DataFieldX = "Sequence"
+				};
+
+				model.Series.Add(series);
+			}
+
+			plotViewPID.Model = model;
 		}
 
 
