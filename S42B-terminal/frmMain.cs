@@ -256,7 +256,7 @@ namespace S42B_terminal
 
 		private void SerialPortDriver_ErrorReceived(object sender, System.IO.Ports.SerialErrorReceivedEventArgs e)
 		{
-			throw new NotImplementedException();
+			//throw new NotImplementedException();
 		}
 
 		private byte[] binaryBuffer = new byte[1024*1024*100];
