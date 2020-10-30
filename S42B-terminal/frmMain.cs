@@ -154,6 +154,7 @@ namespace S42B_terminal
 
 									// start measuring PID error
 									sequence = 0;
+									pointLog = new List<TestPoint>();
 									{
 										var packet = new byte[8];
 										packet[0] = 0xfe; // header
@@ -330,43 +331,42 @@ namespace S42B_terminal
 
 							// pid scope
 
-							var posMeasured =
+							TestPoint tp = new TestPoint();
+							tp.Sequence = sequence;
+
+							tp.PosMeasured =
 								  binaryBuffer[4 + 0] << 24
 								| binaryBuffer[5 + 0] << 16
 								| binaryBuffer[6 + 0] << 8
 								| binaryBuffer[7 + 0] << 0;
 
-							var posTarget =
+							tp.PosTarget =
 								  binaryBuffer[4 + 4] << 24
 								| binaryBuffer[5 + 4] << 16
 								| binaryBuffer[6 + 4] << 8
 								| binaryBuffer[7 + 4] << 0;
 
-							var velMeasured =
+							tp.VelMeasured = 
 								  binaryBuffer[4 + 8] << 24
 								| binaryBuffer[5 + 8] << 16
 								| binaryBuffer[6 + 8] << 8
 								| binaryBuffer[7 + 8] << 0;
 
-							var velTarget =
+							tp.VelTarget =
 								  binaryBuffer[4 + 12] << 24
 								| binaryBuffer[5 + 12] << 16
 								| binaryBuffer[6 + 12] << 8
 								| binaryBuffer[7 + 12] << 0;
 
-							var pidI =
+							tp.PidI =
 								  binaryBuffer[4 + 16] << 24
 								| binaryBuffer[5 + 16] << 16
 								| binaryBuffer[6 + 16] << 8
 								| binaryBuffer[7 + 16] << 0;
 
 
-							//if (!pidStopwatch.IsRunning)
-							//	pidStopwatch.Start();
-							//var t = pidStopwatch.ElapsedTicks / stopwatchDivisor;
-							int e = posTarget - posMeasured;
 							bool log = false;
-							if (Math.Abs(e) > 3 || Math.Abs(pidI) > 2000)
+							if (Math.Abs(tp.PosError) > 3 || Math.Abs(tp.PidI) > 2000)
 							{
 								log = true;
 								silence = silenceMax;
@@ -384,27 +384,17 @@ namespace S42B_terminal
 
 							if (log)
 							{
-								appendLogText(string.Format(
-									"[pid scope]\t"
-									+ "{0}\t"
-									+ "{1}\t"
-									+ "{2}\t"
-									+ "{3}\t"
-									+ "{4}\t"
-									+ "{5}\t"
-									+ "{6}\r\n",
-									sequence++,
-									posMeasured,
-									posTarget,
-									e,
-									velMeasured,
-									-velTarget,
-									pidI));
+								pointLog.Add(tp);
 							}
 						}
+						var extraBytes = filledLen - expectedLen;
+						nextPacket = data.Length - extraBytes;
 					}
-					var extraBytes = filledLen - expectedLen;
-					nextPacket = data.Length - extraBytes;
+					else
+					{
+						// try starting at next byte
+						nextPacket = 1;
+					}
 					binaryWritePointer = null;
 
 				}
@@ -415,10 +405,12 @@ namespace S42B_terminal
 			return nextPacket;
 		}
 
+		List<TestPoint> pointLog = new List<TestPoint>();
+
 		static readonly int silenceMax = 30;
 		int silence = silenceMax;
 
-		long sequence = 0;
+		int sequence = 0;
 
 		static Regex serialRe = new Regex(@"\((COM\d+)\)");
 
