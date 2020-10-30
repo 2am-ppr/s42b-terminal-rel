@@ -342,7 +342,7 @@ namespace S42B_terminal
 							// pid scope
 
 							TestPoint tp = new TestPoint();
-							tp.Sequence = sequence;
+							tp.Sequence = sequence++;
 
 							tp.PosMeasured =
 								  binaryBuffer[4 + 0] << 24
