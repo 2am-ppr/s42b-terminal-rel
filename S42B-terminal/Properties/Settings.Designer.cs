@@ -49,7 +49,7 @@ namespace S42B_terminal.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("38400")]
+        [global::System.Configuration.DefaultSettingValueAttribute("250000")]
         public int SerialBaudDriver {
             get {
                 return ((int)(this["SerialBaudDriver"]));
@@ -73,7 +73,7 @@ namespace S42B_terminal.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
         public ushort PidDivisor {
             get {
                 return ((ushort)(this["PidDivisor"]));

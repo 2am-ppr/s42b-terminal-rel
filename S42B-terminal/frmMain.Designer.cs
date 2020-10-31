@@ -149,6 +149,7 @@
             "19200",
             "38400",
             "115200",
+            "250000",
             "2000000"});
 			this.cmbBaudDriver.Location = new System.Drawing.Point(917, 10);
 			this.cmbBaudDriver.Name = "cmbBaudDriver";
