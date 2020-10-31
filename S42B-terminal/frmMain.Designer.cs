@@ -249,10 +249,10 @@
 			// 
 			// txtGcodeTest
 			// 
-			this.txtGcodeTest.Location = new System.Drawing.Point(171, 110);
+			this.txtGcodeTest.Location = new System.Drawing.Point(258, 110);
 			this.txtGcodeTest.Multiline = true;
 			this.txtGcodeTest.Name = "txtGcodeTest";
-			this.txtGcodeTest.Size = new System.Drawing.Size(150, 114);
+			this.txtGcodeTest.Size = new System.Drawing.Size(236, 114);
 			this.txtGcodeTest.TabIndex = 16;
 			this.txtGcodeTest.Text = "G0 X100 ; move\r\nG4 P100 ; dwell\r\nG0 X-100 ; move\r\nG4 P100 ; dwell";
 			// 
@@ -268,7 +268,7 @@
 			// btnPidTest
 			// 
 			this.btnPidTest.Enabled = false;
-			this.btnPidTest.Location = new System.Drawing.Point(327, 137);
+			this.btnPidTest.Location = new System.Drawing.Point(499, 137);
 			this.btnPidTest.Name = "btnPidTest";
 			this.btnPidTest.Size = new System.Drawing.Size(102, 23);
 			this.btnPidTest.TabIndex = 19;
@@ -288,7 +288,7 @@
             "200",
             "500",
             "1000"});
-			this.cmbPidDivisor.Location = new System.Drawing.Point(327, 110);
+			this.cmbPidDivisor.Location = new System.Drawing.Point(499, 110);
 			this.cmbPidDivisor.Name = "cmbPidDivisor";
 			this.cmbPidDivisor.Size = new System.Drawing.Size(102, 21);
 			this.cmbPidDivisor.TabIndex = 20;
@@ -297,7 +297,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(324, 94);
+			this.label7.Location = new System.Drawing.Point(496, 94);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(77, 13);
 			this.label7.TabIndex = 21;
@@ -307,10 +307,10 @@
 			// 
 			this.txtMarlinResponse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.txtMarlinResponse.Location = new System.Drawing.Point(435, 110);
+			this.txtMarlinResponse.Location = new System.Drawing.Point(607, 110);
 			this.txtMarlinResponse.Multiline = true;
 			this.txtMarlinResponse.Name = "txtMarlinResponse";
-			this.txtMarlinResponse.Size = new System.Drawing.Size(466, 114);
+			this.txtMarlinResponse.Size = new System.Drawing.Size(294, 114);
 			this.txtMarlinResponse.TabIndex = 22;
 			// 
 			// btnDiscDriver
@@ -339,18 +339,18 @@
 			// 
 			// txtGcodePrep
 			// 
-			this.txtGcodePrep.Location = new System.Drawing.Point(15, 110);
+			this.txtGcodePrep.Location = new System.Drawing.Point(16, 110);
 			this.txtGcodePrep.Multiline = true;
 			this.txtGcodePrep.Name = "txtGcodePrep";
 			this.txtGcodePrep.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.txtGcodePrep.Size = new System.Drawing.Size(150, 114);
+			this.txtGcodePrep.Size = new System.Drawing.Size(236, 114);
 			this.txtGcodePrep.TabIndex = 16;
 			this.txtGcodePrep.Text = resources.GetString("txtGcodePrep.Text");
 			// 
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(168, 94);
+			this.label8.Location = new System.Drawing.Point(255, 94);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(69, 13);
 			this.label8.TabIndex = 18;
@@ -382,7 +382,7 @@
 			// btnStartExternal
 			// 
 			this.btnStartExternal.Enabled = false;
-			this.btnStartExternal.Location = new System.Drawing.Point(327, 166);
+			this.btnStartExternal.Location = new System.Drawing.Point(499, 166);
 			this.btnStartExternal.Name = "btnStartExternal";
 			this.btnStartExternal.Size = new System.Drawing.Size(102, 23);
 			this.btnStartExternal.TabIndex = 25;
@@ -393,7 +393,7 @@
 			// btnStopTest
 			// 
 			this.btnStopTest.Enabled = false;
-			this.btnStopTest.Location = new System.Drawing.Point(327, 195);
+			this.btnStopTest.Location = new System.Drawing.Point(499, 195);
 			this.btnStopTest.Name = "btnStopTest";
 			this.btnStopTest.Size = new System.Drawing.Size(102, 23);
 			this.btnStopTest.TabIndex = 25;
