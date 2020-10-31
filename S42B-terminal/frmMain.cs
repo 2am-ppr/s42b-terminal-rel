@@ -211,21 +211,7 @@ namespace S42B_terminal
 
 		private void stopPidSampling()
 		{
-			var packet = new byte[8];
-			packet[0] = 0xfe; // header
-			packet[1] = 0xfe;
-			packet[2] = 5; // length
-			packet[3] = 0x55;
-			var value = 0;
-			packet[4] = (byte)((value >> 8) & 0xff);
-			packet[5] = (byte)((value >> 0) & 0xff);
-			var checksum = packet.Skip(2).Take(4).Sum(x => x);
-
-			packet[6] = (byte)(checksum & 0xff);
-
-			packet[7] = 0x16;
-
-			serialPortDriver.Write(packet, 0, packet.Length);
+			sendDriverPacket(0x55, 0);
 
 			Task.Delay(TimeSpan.FromSeconds(1))
 				.ContinueWith(new Action<Task>((t) =>
@@ -244,23 +230,30 @@ namespace S42B_terminal
 			// start measuring PID error
 			sequence = 0;
 			pointLog = new List<TestPoint>();
-			{
-				var packet = new byte[8];
-				packet[0] = 0xfe; // header
-				packet[1] = 0xfe;
-				packet[2] = 5; // length
-				packet[3] = 0x55;
-				var value = pidDivisor;
-				packet[4] = (byte)((value >> 8) & 0xff);
-				packet[5] = (byte)((value >> 0) & 0xff);
-				var checksum = packet.Skip(2).Take(4).Sum(x => x);
 
-				packet[6] = (byte)(checksum & 0xff);
+			// read PID params
+			sendDriverPacket(0xB0, 0xaaaa);
 
-				packet[7] = 0x16;
+			// start PID sampling
+			sendDriverPacket(0x55, pidDivisor);
+		}
 
-				serialPortDriver.Write(packet, 0, packet.Length);
-			}
+		private void sendDriverPacket(byte function, ushort value)
+		{
+			var packet = new byte[8];
+			packet[0] = 0xfe; // header
+			packet[1] = 0xfe;
+			packet[2] = 5; // length
+			packet[3] = function;
+			packet[4] = (byte)((value >> 8) & 0xff);
+			packet[5] = (byte)((value >> 0) & 0xff);
+			var checksum = packet.Skip(2).Take(4).Sum(x => x);
+
+			packet[6] = (byte)(checksum & 0xff);
+
+			packet[7] = 0x16;
+
+			serialPortDriver.Write(packet, 0, packet.Length);
 		}
 
 		int pageSeq = 1;
@@ -583,21 +576,8 @@ namespace S42B_terminal
 
 		private void btnSend_Click(object sender, EventArgs e)
 		{
-			var packet = new byte[8];
-			packet[0] = 0xfe; // header
-			packet[1] = 0xfe;
-			packet[2] = 5; // length
-			packet[3] = currentCommand.Function;
 			var value = ushort.Parse(cmbValue.Text.ToString());
-			packet[4] = (byte)((value >> 8) & 0xff);
-			packet[5] = (byte)((value >> 0) & 0xff);
-			var checksum = packet.Skip(2).Take(4).Sum(x => x);
-
-			packet[6] = (byte)(checksum & 0xff);
-
-			packet[7] = 0x16;
-
-			serialPortDriver.Write(packet, 0, packet.Length);
+			sendDriverPacket(currentCommand.Function, value);
 		}
 
 		int lastLen = 0;
