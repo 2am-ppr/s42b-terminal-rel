@@ -70,5 +70,17 @@ namespace S42B_terminal.Properties {
                 this["SerialBaudMarlin"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public ushort PidDivisor {
+            get {
+                return ((ushort)(this["PidDivisor"]));
+            }
+            set {
+                this["PidDivisor"] = value;
+            }
+        }
     }
 }

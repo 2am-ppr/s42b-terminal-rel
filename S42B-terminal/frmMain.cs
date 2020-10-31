@@ -116,7 +116,8 @@ namespace S42B_terminal
 			cmbBaudDriver.SelectedItem = Properties.Settings.Default.SerialBaudDriver.ToString();
 			cmbBaudMarlin.SelectedItem = Properties.Settings.Default.SerialBaudMarlin.ToString();
 
-			cmbPidDivisor.SelectedItem = "5";
+			pidDivisor = Properties.Settings.Default.PidDivisor;
+			cmbPidDivisor.SelectedItem = pidDivisor.ToString();
 
 			serialPortDriver.ReadTimeout = 200;
 			serialPortMarlin.ReadTimeout = 200;
@@ -561,6 +562,14 @@ namespace S42B_terminal
 			currentCommand = cmd;
 		}
 
+
+		private void cmbPidDivisor_SelectionChangeCommitted(object sender, EventArgs e)
+		{
+			pidDivisor = Convert.ToUInt16(cmbPidDivisor.SelectedItem);
+			Properties.Settings.Default.PidDivisor = pidDivisor;
+			Properties.Settings.Default.Save();
+		}
+
 		private void btnSend_Click(object sender, EventArgs e)
 		{
 			var packet = new byte[8];
@@ -610,8 +619,6 @@ namespace S42B_terminal
 			marlinCommandQueue = new ConcurrentQueue<string>();
 
 			lineNumber = 1;
-
-			pidDivisor = ushort.Parse(cmbPidDivisor.Text.ToString());
 
 			foreach (var l in txtGcodePrep.Lines)
 			{

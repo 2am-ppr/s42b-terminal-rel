@@ -14,5 +14,8 @@
     <Setting Name="SerialBaudMarlin" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">250000</Value>
     </Setting>
+    <Setting Name="PidDivisor" Type="System.UInt16" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

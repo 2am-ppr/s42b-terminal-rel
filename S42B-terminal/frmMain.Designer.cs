@@ -290,6 +290,7 @@
 			this.cmbPidDivisor.Name = "cmbPidDivisor";
 			this.cmbPidDivisor.Size = new System.Drawing.Size(102, 21);
 			this.cmbPidDivisor.TabIndex = 20;
+			this.cmbPidDivisor.SelectionChangeCommitted += new System.EventHandler(this.cmbPidDivisor_SelectionChangeCommitted);
 			// 
 			// label7
 			// 
