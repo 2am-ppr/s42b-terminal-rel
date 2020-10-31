@@ -221,7 +221,8 @@ namespace S42B_terminal
 					{
 						copy = pointLog.ToList();
 					}
-					refreshChart(copy);
+					var pars = new Dictionary<string, int>(driverParams);
+					refreshChart(copy, pars);
 				}));
 		}
 
@@ -258,14 +259,14 @@ namespace S42B_terminal
 
 		int pageSeq = 1;
 
-		private void refreshChart(List<TestPoint> points)
+		private void refreshChart(List<TestPoint> points, Dictionary<string, int> pars)
 		{
 			if (!points.Any())
 			{
 				appendLogText("failed to log any PID datapoints\r\n");
 				return;
 			}
-			var control = new PidResultControl(points);
+			var control = new PidResultControl(points, pars);
 
 			BeginInvoke(new Action(() =>
 			{
@@ -330,11 +331,37 @@ namespace S42B_terminal
 
 		StringBuilder sb = new StringBuilder(50000);
 
+		Regex reDriverParam = new Regex(@"^(P|I|D|FF|IU) --.* =(\d+)");
+
+		Dictionary<string, int> driverParams = new Dictionary<string, int>();
+
+		int sbDriverReadPtr = 0;
+
 		private void appendLogText(string text)
 		{
 			lock (sb)
 			{
 				sb.Append(text);
+
+				int start = sbDriverReadPtr;
+				for (int i = start; i < sb.Length; i++)
+				{
+					if (sb[i] == '\n' && i > start)
+					{
+						sbDriverReadPtr = i;
+						var line = sb.ToString(start, i - start - 1);
+
+						//Debug.WriteLine(string.Format("driver: {0}", line));
+						var match = reDriverParam.Match(line);
+						if (match.Success)
+						{
+							driverParams[match.Groups[1].Value] = int.Parse(match.Groups[2].Value);
+						}
+
+						start = i + 1;
+					}
+				}
+
 			}
 		}
 
@@ -584,14 +611,21 @@ namespace S42B_terminal
 
 		private void tmrDumpLog_Tick(object sender, EventArgs e)
 		{
-			lock(sb)
+			lock (sb)
 			{
 				if (lastLen > 0 && sb.Length == lastLen)
 				{
-					var res = sb.ToString();
+					int lastNewline = sbDriverReadPtr;
+
+					if (lastNewline < 1)
+						return;
+
+					var res = sb.ToString(0, lastNewline + 1);
+					sb.Remove(0, lastNewline + 1);
+					sbDriverReadPtr = 0;
+
 					BeginInvoke(new Action(() => { textBox1.AppendText(res); }));
 
-					sb.Clear();
 				}
 				else
 				{

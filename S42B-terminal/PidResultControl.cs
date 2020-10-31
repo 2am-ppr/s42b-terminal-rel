@@ -16,6 +16,7 @@ namespace S42B_terminal
 	public partial class PidResultControl : UserControl
 	{
 		private List<TestPoint> pointLog;
+		private Dictionary<string, int> pars;
 		private PlotModel model;
 		private int e_max;
 		private int e_min;
@@ -46,7 +47,16 @@ namespace S42B_terminal
 			foreach(var t in things)
 			{
 				var label = new Label() { AutoSize = true, Padding = labelPadding, Text = t.name };
-				var box = new TextBox() { Text = t.value.ToString("#.##"), MaxLength = 8, ReadOnly = true, Width = 60 };
+				var box = new TextBox() { Text = t.value.ToString("#.##"), MaxLength = 8, ReadOnly = true, Width = 40 };
+
+				pnlInfo.Controls.Add(label);
+				pnlInfo.Controls.Add(box);
+			}
+
+			foreach(var t in pars)
+			{
+				var label = new Label() { AutoSize = true, Padding = labelPadding, Text = t.Key };
+				var box = new TextBox() { Text = t.Value.ToString("#.##"), MaxLength = 8, ReadOnly = true, Width = 30 };
 
 				pnlInfo.Controls.Add(label);
 				pnlInfo.Controls.Add(box);
@@ -61,11 +71,13 @@ namespace S42B_terminal
 			}
 		}
 
-		public PidResultControl(List<TestPoint> pointLog)
+		public PidResultControl(List<TestPoint> pointLog, Dictionary<string, int> pars)
 		{
 			InitializeComponent();
 
 			this.pointLog = pointLog;
+			this.pars = pars;
+
 			var model = new PlotModel()
 			{
 				Title = "PID Tune"
