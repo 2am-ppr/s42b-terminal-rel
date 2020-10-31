@@ -74,11 +74,13 @@ namespace S42B_terminal
 			var startPos = pointLog.First().PosTarget;
 
 			var header = pointLog.TakeWhile(x => Math.Abs(x.PosError) < 6 && x.PosTarget == startPos).Count();
-			pointLog.RemoveRange(0, header);
+			if (header != pointLog.Count)
+				pointLog.RemoveRange(0, header);
 
 			var endPos = pointLog.Last().PosTarget;
 			var tail = pointLog.Reverse<TestPoint>().TakeWhile(x => Math.Abs(x.PosError) < 6 && x.PosTarget == endPos).Count();
-			pointLog.RemoveRange(pointLog.Count - tail, tail);
+			if (tail != pointLog.Count)
+				pointLog.RemoveRange(pointLog.Count - tail, tail);
 
 
 			var colors = new[] { "0072bd", "d95319", "edb120", "7e2f8e", "77ac30", "4dbeee", "a2142f" };
