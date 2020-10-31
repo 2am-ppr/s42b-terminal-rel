@@ -39,7 +39,7 @@ namespace S42B_terminal
 			{
 				("E max", e_max),
 				("E min", e_min),
-				("E avg", e_avg),
+				("|E| avg", e_avg),
 				("E RMS", e_rms),
 			};
 
@@ -154,7 +154,7 @@ namespace S42B_terminal
 
 			this.e_max = pointLog.Max(x => x.PosError);
 			this.e_min = pointLog.Min(x => x.PosError);
-			this.e_avg = pointLog.Average(x => x.PosError);
+			this.e_avg = pointLog.Average(x => Math.Abs(x.PosError));
 			this.e_rms = Math.Sqrt(pointLog.Average(x => Math.Pow(x.PosError, 2)));
 			
 			this.model = model;
