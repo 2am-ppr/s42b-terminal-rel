@@ -73,6 +73,7 @@
 			this.textBox1.Location = new System.Drawing.Point(0, 0);
 			this.textBox1.Multiline = true;
 			this.textBox1.Name = "textBox1";
+			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
 			this.textBox1.Size = new System.Drawing.Size(1210, 401);
 			this.textBox1.TabIndex = 0;
 			// 
@@ -252,6 +253,7 @@
 			this.txtGcodeTest.Location = new System.Drawing.Point(258, 110);
 			this.txtGcodeTest.Multiline = true;
 			this.txtGcodeTest.Name = "txtGcodeTest";
+			this.txtGcodeTest.ScrollBars = System.Windows.Forms.ScrollBars.Both;
 			this.txtGcodeTest.Size = new System.Drawing.Size(236, 114);
 			this.txtGcodeTest.TabIndex = 16;
 			this.txtGcodeTest.Text = "G0 X100 ; move\r\nG4 P100 ; dwell\r\nG0 X-100 ; move\r\nG4 P100 ; dwell";
@@ -310,6 +312,7 @@
 			this.txtMarlinResponse.Location = new System.Drawing.Point(607, 110);
 			this.txtMarlinResponse.Multiline = true;
 			this.txtMarlinResponse.Name = "txtMarlinResponse";
+			this.txtMarlinResponse.ScrollBars = System.Windows.Forms.ScrollBars.Both;
 			this.txtMarlinResponse.Size = new System.Drawing.Size(623, 114);
 			this.txtMarlinResponse.TabIndex = 22;
 			// 
