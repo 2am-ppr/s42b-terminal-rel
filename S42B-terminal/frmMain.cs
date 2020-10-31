@@ -39,6 +39,8 @@ namespace S42B_terminal
 			new CommandInfo(Parameter.I, "Set I", 0xA1, 10, x=> true),
 			new CommandInfo(Parameter.D, "Set D", 0xA2, 250, x=> true),
 
+			new CommandInfo(Parameter.P, "Set FF", 0xA7, 1, x=> true, validValues: new ushort[]{ 1, 0 }),
+			new CommandInfo(Parameter.I, "Set I unwinding", 0xA8, 1, x=> true, validValues: new ushort[]{ 1, 0 }),
 
 			new CommandInfo(Parameter.Current, "Set Current", 0xA3, 1600, validRange:new Tuple<ushort, ushort>(0, 3200)),
 			new CommandInfo(Parameter.Microstep, "Set Microstep", 0xA4, 16, validValues: new ushort[]{ 2,4,8,16,32} ),
