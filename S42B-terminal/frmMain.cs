@@ -90,16 +90,33 @@ namespace S42B_terminal
 			cmbSerialDriver.DisplayMember = "Item1";
 			cmbSerialDriver.ValueMember = "Item2";
 
-			cmbBaudDriver.SelectedIndex = 1;
+			{
+				var selected = Properties.Settings.Default.SerialPortDriver;
+				if (selected != null) {
+					var matching = serialPorts.Find(x => x.Item2 == selected);
+					if (matching != null)
+						cmbSerialDriver.SelectedItem = matching;
+				}
+			}
 
 			cmbSerialMarlin.DataSource = serialPorts.ToList();
 			cmbSerialMarlin.DisplayMember = "Item1";
 			cmbSerialMarlin.ValueMember = "Item2";
 
-			cmbBaudMarlin.SelectedIndex = 0;
+			{
+				var selected = Properties.Settings.Default.SerialPortMarlin;
+				if (selected != null)
+				{
+					var matching = serialPorts.Find(x => x.Item2 == selected);
+					if (matching != null)
+						cmbSerialMarlin.SelectedItem = matching;
+				}
+			}
 
-			cmbPidDivisor.SelectedIndex = 1;
+			cmbBaudDriver.SelectedItem = Properties.Settings.Default.SerialBaudDriver.ToString();
+			cmbBaudMarlin.SelectedItem = Properties.Settings.Default.SerialBaudMarlin.ToString();
 
+			cmbPidDivisor.SelectedItem = "5";
 
 			serialPortDriver.ReadTimeout = 200;
 			serialPortMarlin.ReadTimeout = 200;
@@ -632,6 +649,34 @@ namespace S42B_terminal
 		}
 		int lineNumber = 0;
 		int? marlinQueueLastLineNoNext = null;
+
+		private void cmbSerialDriver_SelectionChangeCommitted(object sender, EventArgs e)
+		{
+			var port = cmbSerialDriver.SelectedValue as string;
+			Properties.Settings.Default.SerialPortDriver = port;
+			Properties.Settings.Default.Save();
+		}
+
+		private void cmbSerialMarlin_SelectionChangeCommitted(object sender, EventArgs e)
+		{
+			var port = cmbSerialMarlin.SelectedValue as string;
+			Properties.Settings.Default.SerialPortMarlin = port;
+			Properties.Settings.Default.Save();
+		}
+
+		private void cmbBaudDriver_SelectionChangeCommitted(object sender, EventArgs e)
+		{
+			var baud = Convert.ToInt32(cmbBaudDriver.SelectedItem);
+			Properties.Settings.Default.SerialBaudDriver = baud;
+			Properties.Settings.Default.Save();
+		}
+
+		private void cmbBaudMarlin_SelectionChangeCommitted(object sender, EventArgs e)
+		{
+			var baud = Convert.ToInt32(cmbBaudMarlin.SelectedItem);
+			Properties.Settings.Default.SerialBaudMarlin = baud;
+			Properties.Settings.Default.Save();
+		}
 
 	}
 

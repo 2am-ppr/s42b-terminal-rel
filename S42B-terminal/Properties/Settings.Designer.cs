@@ -22,5 +22,53 @@ namespace S42B_terminal.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SerialPortDriver {
+            get {
+                return ((string)(this["SerialPortDriver"]));
+            }
+            set {
+                this["SerialPortDriver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SerialPortMarlin {
+            get {
+                return ((string)(this["SerialPortMarlin"]));
+            }
+            set {
+                this["SerialPortMarlin"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("38400")]
+        public int SerialBaudDriver {
+            get {
+                return ((int)(this["SerialBaudDriver"]));
+            }
+            set {
+                this["SerialBaudDriver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("250000")]
+        public int SerialBaudMarlin {
+            get {
+                return ((int)(this["SerialBaudMarlin"]));
+            }
+            set {
+                this["SerialBaudMarlin"] = value;
+            }
+        }
     }
 }

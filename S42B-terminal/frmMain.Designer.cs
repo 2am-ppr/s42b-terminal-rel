@@ -124,6 +124,7 @@
 			this.cmbSerialDriver.Name = "cmbSerialDriver";
 			this.cmbSerialDriver.Size = new System.Drawing.Size(439, 21);
 			this.cmbSerialDriver.TabIndex = 5;
+			this.cmbSerialDriver.SelectionChangeCommitted += new System.EventHandler(this.cmbSerialDriver_SelectionChangeCommitted);
 			// 
 			// btnConnect
 			// 
@@ -150,6 +151,7 @@
 			this.cmbBaudDriver.Name = "cmbBaudDriver";
 			this.cmbBaudDriver.Size = new System.Drawing.Size(95, 21);
 			this.cmbBaudDriver.TabIndex = 7;
+			this.cmbBaudDriver.SelectionChangeCommitted += new System.EventHandler(this.cmbBaudDriver_SelectionChangeCommitted);
 			// 
 			// btnSend
 			// 
@@ -218,6 +220,7 @@
 			this.cmbBaudMarlin.Name = "cmbBaudMarlin";
 			this.cmbBaudMarlin.Size = new System.Drawing.Size(95, 21);
 			this.cmbBaudMarlin.TabIndex = 14;
+			this.cmbBaudMarlin.SelectionChangeCommitted += new System.EventHandler(this.cmbBaudMarlin_SelectionChangeCommitted);
 			// 
 			// btnConnectMarlin
 			// 
@@ -240,6 +243,7 @@
 			this.cmbSerialMarlin.Name = "cmbSerialMarlin";
 			this.cmbSerialMarlin.Size = new System.Drawing.Size(439, 21);
 			this.cmbSerialMarlin.TabIndex = 12;
+			this.cmbSerialMarlin.SelectionChangeCommitted += new System.EventHandler(this.cmbSerialMarlin_SelectionChangeCommitted);
 			// 
 			// txtGcodeTest
 			// 
