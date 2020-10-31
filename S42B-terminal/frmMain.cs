@@ -357,7 +357,14 @@ namespace S42B_terminal
 
 		Regex reDriverParam = new Regex(@"^(P|I|D|FF|IU) --.* =(\d+)");
 
-		Dictionary<string, int> driverParams = new Dictionary<string, int>();
+		Dictionary<string, int> driverParams = new Dictionary<string, int>()
+		{
+			{"P", 0 },
+			{"I", 0 },
+			{"D", 0 },
+			{"FF", 0 },
+			{"IU", 0 },
+		};
 
 		int sbDriverReadPtr = 0;
 
