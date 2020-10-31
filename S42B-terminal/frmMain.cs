@@ -172,60 +172,13 @@ namespace S42B_terminal
 									// continue after setup
 									marlinQueueLastLineNo = marlinQueueLastLineNoNext.Value;
 									marlinQueueLastLineNoNext = null;
-
-									// start measuring PID error
-									sequence = 0;
-									pointLog = new List<TestPoint>();
-									{
-										var packet = new byte[8];
-										packet[0] = 0xfe; // header
-										packet[1] = 0xfe;
-										packet[2] = 5; // length
-										packet[3] = 0x55;
-										var value = pidDivisor;
-										packet[4] = (byte)((value >> 8) & 0xff);
-										packet[5] = (byte)((value >> 0) & 0xff);
-										var checksum = packet.Skip(2).Take(4).Sum(x => x);
-
-										packet[6] = (byte)(checksum & 0xff);
-
-										packet[7] = 0x16;
-
-										serialPortDriver.Write(packet, 0, packet.Length);
-									}
+									startPidSampling();
 								}
 								else
 								{
 									// we sent all the things!
-									// stop measuring PID error
 
-									var packet = new byte[8];
-									packet[0] = 0xfe; // header
-									packet[1] = 0xfe;
-									packet[2] = 5; // length
-									packet[3] = 0x55;
-									var value = 0;
-									packet[4] = (byte)((value >> 8) & 0xff);
-									packet[5] = (byte)((value >> 0) & 0xff);
-									var checksum = packet.Skip(2).Take(4).Sum(x => x);
-
-									packet[6] = (byte)(checksum & 0xff);
-
-									packet[7] = 0x16;
-
-									serialPortDriver.Write(packet, 0, packet.Length);
-
-									Task.Delay(TimeSpan.FromSeconds(1))
-										.ContinueWith(new Action<Task>((t) =>
-										{
-											List<TestPoint> copy;
-											lock (pointLog)
-											{
-												copy = pointLog.ToList();
-											}
-											refreshChart(copy);
-										}));
-
+									stopPidSampling();
 								}
 							}
 						}
@@ -252,6 +205,60 @@ namespace S42B_terminal
 				sbMarlinResponse.Remove(0, lastN + 1);
 			}
 			
+		}
+
+		private void stopPidSampling()
+		{
+			var packet = new byte[8];
+			packet[0] = 0xfe; // header
+			packet[1] = 0xfe;
+			packet[2] = 5; // length
+			packet[3] = 0x55;
+			var value = 0;
+			packet[4] = (byte)((value >> 8) & 0xff);
+			packet[5] = (byte)((value >> 0) & 0xff);
+			var checksum = packet.Skip(2).Take(4).Sum(x => x);
+
+			packet[6] = (byte)(checksum & 0xff);
+
+			packet[7] = 0x16;
+
+			serialPortDriver.Write(packet, 0, packet.Length);
+
+			Task.Delay(TimeSpan.FromSeconds(1))
+				.ContinueWith(new Action<Task>((t) =>
+				{
+					List<TestPoint> copy;
+					lock (pointLog)
+					{
+						copy = pointLog.ToList();
+					}
+					refreshChart(copy);
+				}));
+		}
+
+		private void startPidSampling()
+		{
+			// start measuring PID error
+			sequence = 0;
+			pointLog = new List<TestPoint>();
+			{
+				var packet = new byte[8];
+				packet[0] = 0xfe; // header
+				packet[1] = 0xfe;
+				packet[2] = 5; // length
+				packet[3] = 0x55;
+				var value = pidDivisor;
+				packet[4] = (byte)((value >> 8) & 0xff);
+				packet[5] = (byte)((value >> 0) & 0xff);
+				var checksum = packet.Skip(2).Take(4).Sum(x => x);
+
+				packet[6] = (byte)(checksum & 0xff);
+
+				packet[7] = 0x16;
+
+				serialPortDriver.Write(packet, 0, packet.Length);
+			}
 		}
 
 		int pageSeq = 1;
@@ -493,6 +500,8 @@ namespace S42B_terminal
 				btnPidTest.Enabled = true;
 
 			btnDiscDriver.Enabled = true;
+			btnStartExternal.Enabled = true;
+			btnStopTest.Enabled = true;
 		}
 
 		private void btnConnectMarlin_Click(object sender, EventArgs e)
@@ -691,6 +700,19 @@ namespace S42B_terminal
 			var baud = Convert.ToInt32(cmbBaudMarlin.SelectedItem);
 			Properties.Settings.Default.SerialBaudMarlin = baud;
 			Properties.Settings.Default.Save();
+		}
+
+		private void btnStartExternal_Click(object sender, EventArgs e)
+		{
+			startPidSampling();
+			btnStartExternal.Enabled = false;
+		}
+
+		private void btnStopTest_Click(object sender, EventArgs e)
+		{
+			marlinQueueLastLineNoNext = null;
+			stopPidSampling();
+			btnStartExternal.Enabled = true;
 		}
 
 	}

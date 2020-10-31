@@ -59,6 +59,8 @@
 			this.label8 = new System.Windows.Forms.Label();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabLog = new System.Windows.Forms.TabPage();
+			this.btnStartExternal = new System.Windows.Forms.Button();
+			this.btnStopTest = new System.Windows.Forms.Button();
 			this.tabControl1.SuspendLayout();
 			this.tabLog.SuspendLayout();
 			this.SuspendLayout();
@@ -270,7 +272,7 @@
 			this.btnPidTest.Name = "btnPidTest";
 			this.btnPidTest.Size = new System.Drawing.Size(102, 23);
 			this.btnPidTest.TabIndex = 19;
-			this.btnPidTest.Text = "Run PID Test";
+			this.btnPidTest.Text = "Run GCODE test";
 			this.btnPidTest.UseVisualStyleBackColor = true;
 			this.btnPidTest.Click += new System.EventHandler(this.btnPidTest_Click);
 			// 
@@ -377,11 +379,35 @@
 			this.tabLog.Text = "Log";
 			this.tabLog.UseVisualStyleBackColor = true;
 			// 
+			// btnStartExternal
+			// 
+			this.btnStartExternal.Enabled = false;
+			this.btnStartExternal.Location = new System.Drawing.Point(327, 166);
+			this.btnStartExternal.Name = "btnStartExternal";
+			this.btnStartExternal.Size = new System.Drawing.Size(102, 23);
+			this.btnStartExternal.TabIndex = 25;
+			this.btnStartExternal.Text = "Start external test";
+			this.btnStartExternal.UseVisualStyleBackColor = true;
+			this.btnStartExternal.Click += new System.EventHandler(this.btnStartExternal_Click);
+			// 
+			// btnStopTest
+			// 
+			this.btnStopTest.Enabled = false;
+			this.btnStopTest.Location = new System.Drawing.Point(327, 195);
+			this.btnStopTest.Name = "btnStopTest";
+			this.btnStopTest.Size = new System.Drawing.Size(102, 23);
+			this.btnStopTest.TabIndex = 25;
+			this.btnStopTest.Text = "Stop test";
+			this.btnStopTest.UseVisualStyleBackColor = true;
+			this.btnStopTest.Click += new System.EventHandler(this.btnStopTest_Click);
+			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(913, 565);
+			this.Controls.Add(this.btnStopTest);
+			this.Controls.Add(this.btnStartExternal);
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.btnDiscMarlin);
 			this.Controls.Add(this.btnDiscDriver);
@@ -450,6 +476,8 @@
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tabLog;
+		private System.Windows.Forms.Button btnStartExternal;
+		private System.Windows.Forms.Button btnStopTest;
 	}
 }
 
