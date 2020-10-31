@@ -29,7 +29,7 @@ namespace S42B_terminal
 			prompt.Controls.Add(textLabel);
 			prompt.AcceptButton = confirmation;
 
-			return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : "";
+			return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : null;
 		}
 	}
 }

@@ -20,6 +20,8 @@ namespace S42B_terminal
 
 		public int PidI { get; set; }
 
+		public static string TSVHeader =>
+			"time\tPosMeasured\tPosTarget\tPosError\tVelMeasured\tVelTarget\tVelError\tPidI";
 
 		public string ToTSV()
 		{
@@ -30,7 +32,7 @@ namespace S42B_terminal
 					+ "{4}\t"
 					+ "{5}\t"
 					+ "{6}\t"
-					+ "{7}\r\n",
+					+ "{7}",
 				Sequence,
 				PosMeasured,
 				PosTarget,

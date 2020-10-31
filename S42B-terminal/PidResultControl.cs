@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using OxyPlot.Series;
 using OxyPlot;
 using OxyPlot.Axes;
+using System.IO;
 
 namespace S42B_terminal
 {
@@ -35,25 +36,18 @@ namespace S42B_terminal
 			base.OnLoad(e);
 
 			plotView1.Model = model;
+			var things = getAttributes();
 
-			var things = new (string name, double value)[]
+			foreach (var t in things)
 			{
-				("E max", e_max),
-				("E min", e_min),
-				("|E| avg", e_avg),
-				("E RMS", e_rms),
-			};
-
-			foreach(var t in things)
-			{
-				var label = new Label() { AutoSize = true, Padding = labelPadding, Text = t.name };
-				var box = new TextBox() { Text = t.value.ToString("0.##"), MaxLength = 8, ReadOnly = true, Width = 40 };
+				var label = new Label() { AutoSize = true, Padding = labelPadding, Text = t.Key };
+				var box = new TextBox() { Text = t.Value.ToString("0.##"), MaxLength = 8, ReadOnly = true, Width = 40 };
 
 				pnlInfo.Controls.Add(label);
 				pnlInfo.Controls.Add(box);
 			}
 
-			foreach(var t in pars)
+			foreach (var t in pars)
 			{
 				var label = new Label() { AutoSize = true, Padding = labelPadding, Text = t.Key };
 				var box = new TextBox() { Text = t.Value.ToString("0.##"), MaxLength = 8, ReadOnly = true, Width = 30 };
@@ -69,6 +63,17 @@ namespace S42B_terminal
 				pnlInfo.Controls.Add(label);
 				pnlInfo.Controls.Add(box);
 			}
+		}
+
+		private KeyValuePair<string, double>[] getAttributes()
+		{
+			return new KeyValuePair<string, double>[]
+			{
+				new KeyValuePair<string, double>("E max", e_max),
+				new KeyValuePair<string, double>("E min", e_min),
+				new KeyValuePair<string, double>("|E| avg", e_avg),
+				new KeyValuePair<string, double>("E RMS", e_rms),
+			};
 		}
 
 		public PidResultControl(List<TestPoint> pointLog, Dictionary<string, int> pars)
@@ -87,12 +92,12 @@ namespace S42B_terminal
 			var startSeq = pointLog.First().Sequence;
 
 			var header = pointLog.TakeWhile(x => Math.Abs(x.PosError) < 6 && x.PosTarget == startPos).Count();
-			if (header != pointLog.Count)
+			if (header != pointLog.Count && false)
 				pointLog.RemoveRange(0, header);
 
 			var endPos = pointLog.Last().PosTarget;
 			var tail = pointLog.Reverse<TestPoint>().TakeWhile(x => Math.Abs(x.PosError) < 6 && x.PosTarget == endPos).Count();
-			if (tail != pointLog.Count)
+			if (tail != pointLog.Count && false)
 				pointLog.RemoveRange(pointLog.Count - tail, tail);
 
 
@@ -184,6 +189,54 @@ namespace S42B_terminal
 			this.e_rms = Math.Sqrt(pointLog.Average(x => Math.Pow(x.PosError, 2)));
 			
 			this.model = model;
+		}
+
+		public void WriteTSV(StreamWriter w)
+		{
+			w.Write(TestPoint.TSVHeader);
+			w.Write('\t');
+
+			foreach (var t in pars)
+			{
+				w.Write('\t');
+				w.Write(t.Key);
+			}
+
+			foreach (var t in getAttributes())
+			{
+				w.Write('\t');
+				w.Write(t.Key);
+			}
+
+			w.WriteLine();
+
+			var first = true;
+
+			foreach(var p in pointLog)
+			{
+				w.Write(p.ToTSV());
+
+				if (first)
+				{
+					first = false;
+					w.Write('\t');
+
+					foreach (var t in pars)
+					{
+						w.Write('\t');
+						w.Write(t.Value);
+					}
+
+					foreach (var t in getAttributes())
+					{
+						w.Write('\t');
+						w.Write(t.Value);
+					}
+				}
+				w.WriteLine();
+			}
+
+
 		}
 	}
 }

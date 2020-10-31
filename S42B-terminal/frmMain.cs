@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Management;
 using System.Text;
@@ -137,6 +138,8 @@ namespace S42B_terminal
 				new MenuItem("Rename...", OnTabRename),
 				new MenuItem("Move to start", OnTabMoveStart),
 				new MenuItem("Move to end", OnTabMoveEnd),
+				new MenuItem("Save to TSV...", OnTabSaveTSV),
+				new MenuItem("Save to PNG...", OnTabSavePNG),
 				new MenuItem("-"),
 				new MenuItem("Close", OnTabClose),
 			});
@@ -283,9 +286,14 @@ namespace S42B_terminal
 				tp.Controls.Add(control);
 				control.Dock = DockStyle.Fill;
 
+				pidPages.TryAdd(tp, control);
+
 				tabControl1.TabPages.Add(tp);
 			}));
 		}
+
+		ConcurrentDictionary<TabPage, PidResultControl> pidPages = new ConcurrentDictionary<TabPage, PidResultControl>();
+
 
 
 		int? marlinQueueLastLineNo = null;
@@ -789,7 +797,10 @@ namespace S42B_terminal
 		void OnTabClose(object sender, EventArgs e)
 		{
 			tabControl1.TabPages.Remove(pidTabContextMenuTarget);
+			PidResultControl temp;
+			pidPages.TryRemove(pidTabContextMenuTarget, out temp);
 			pidTabContextMenuTarget = null;
+
 		}
 
 		void OnTabMoveEnd(object sender, EventArgs e)
@@ -822,7 +833,63 @@ namespace S42B_terminal
 
 		void OnTabRename(object sender, EventArgs e)
 		{
-			pidTabContextMenuTarget.Text = Prompt.ShowDialog(pidTabContextMenuTarget.Text, "Rename");
+			var newName = Prompt.ShowDialog(pidTabContextMenuTarget.Text, "Rename");
+			if (newName != null)
+				pidTabContextMenuTarget.Text = newName;
+		}
+
+		void OnTabSaveTSV(object sender, EventArgs e)
+		{
+			PidResultControl control = null;
+			if (!pidPages.TryGetValue(pidTabContextMenuTarget, out control))
+				return;
+
+			var d = new SaveFileDialog()
+			{
+				Filter = "Tab Separated Values|*.tsv",
+				Title = "Save as TSV",
+				FileName = pidTabContextMenuTarget.Text + ".tsv",
+				OverwritePrompt = true,
+			};
+			if (d.ShowDialog() == DialogResult.OK)
+			{
+				using (var f = new FileStream(d.FileName, FileMode.Create))
+				using (var w = new StreamWriter(f, Encoding.ASCII))
+				{
+					control.WriteTSV(w);
+				}
+			}
+		}
+
+		void OnTabSavePNG(object sender, EventArgs e)
+		{
+			PidResultControl control = null;
+			if (!pidPages.TryGetValue(pidTabContextMenuTarget, out control))
+				return;
+
+			var d = new SaveFileDialog()
+			{
+				Filter = "PNG Images|*.png",
+				Title = "Save as PNG",
+				FileName = pidTabContextMenuTarget.Text + ".png",
+				OverwritePrompt = true,
+			};
+			if (d.ShowDialog() == DialogResult.OK)
+			{
+				using (var f = new FileStream(d.FileName, FileMode.Create))
+				{
+					control.Dock = DockStyle.None;
+					control.Width = 1920;
+					control.Height = 1080;
+
+					var bitmap = new Bitmap(control.Width, control.Height);
+					control.DrawToBitmap(bitmap, new Rectangle(0, 0, control.Width, control.Height));
+
+					control.Dock = DockStyle.Fill;
+
+					bitmap.Save(f, System.Drawing.Imaging.ImageFormat.Png);
+				}
+			}
 		}
 
 		private void tabControl1_MouseUp(object sender, MouseEventArgs e)
