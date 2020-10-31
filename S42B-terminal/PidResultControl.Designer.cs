@@ -35,10 +35,10 @@
 			// plotView1
 			// 
 			this.plotView1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.plotView1.Location = new System.Drawing.Point(0, 0);
+			this.plotView1.Location = new System.Drawing.Point(0, 29);
 			this.plotView1.Name = "plotView1";
 			this.plotView1.PanCursor = System.Windows.Forms.Cursors.Hand;
-			this.plotView1.Size = new System.Drawing.Size(683, 258);
+			this.plotView1.Size = new System.Drawing.Size(683, 276);
 			this.plotView1.TabIndex = 0;
 			this.plotView1.Text = "plotView1";
 			this.plotView1.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
@@ -47,11 +47,12 @@
 			// 
 			// pnlInfo
 			// 
-			this.pnlInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.pnlInfo.Location = new System.Drawing.Point(0, 258);
+			this.pnlInfo.Dock = System.Windows.Forms.DockStyle.Top;
+			this.pnlInfo.Location = new System.Drawing.Point(0, 0);
 			this.pnlInfo.Name = "pnlInfo";
-			this.pnlInfo.Size = new System.Drawing.Size(683, 47);
+			this.pnlInfo.Size = new System.Drawing.Size(683, 29);
 			this.pnlInfo.TabIndex = 1;
+			this.pnlInfo.WrapContents = false;
 			// 
 			// PidResultControl
 			// 

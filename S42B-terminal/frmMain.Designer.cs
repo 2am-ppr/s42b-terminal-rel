@@ -73,7 +73,7 @@
 			this.textBox1.Location = new System.Drawing.Point(0, 0);
 			this.textBox1.Multiline = true;
 			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(881, 297);
+			this.textBox1.Size = new System.Drawing.Size(1210, 401);
 			this.textBox1.TabIndex = 0;
 			// 
 			// cmbCommand
@@ -84,7 +84,7 @@
 			this.cmbCommand.FormattingEnabled = true;
 			this.cmbCommand.Location = new System.Drawing.Point(77, 37);
 			this.cmbCommand.Name = "cmbCommand";
-			this.cmbCommand.Size = new System.Drawing.Size(439, 21);
+			this.cmbCommand.Size = new System.Drawing.Size(768, 21);
 			this.cmbCommand.TabIndex = 1;
 			this.cmbCommand.SelectionChangeCommitted += new System.EventHandler(this.cmbCommand_SelectionChangeCommitted);
 			// 
@@ -101,7 +101,7 @@
 			// 
 			this.cmbValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.cmbValue.FormattingEnabled = true;
-			this.cmbValue.Location = new System.Drawing.Point(562, 37);
+			this.cmbValue.Location = new System.Drawing.Point(891, 37);
 			this.cmbValue.Name = "cmbValue";
 			this.cmbValue.Size = new System.Drawing.Size(121, 21);
 			this.cmbValue.TabIndex = 3;
@@ -110,7 +110,7 @@
 			// 
 			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(522, 40);
+			this.label2.Location = new System.Drawing.Point(851, 40);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(34, 13);
 			this.label2.TabIndex = 4;
@@ -124,14 +124,14 @@
 			this.cmbSerialDriver.FormattingEnabled = true;
 			this.cmbSerialDriver.Location = new System.Drawing.Point(77, 10);
 			this.cmbSerialDriver.Name = "cmbSerialDriver";
-			this.cmbSerialDriver.Size = new System.Drawing.Size(439, 21);
+			this.cmbSerialDriver.Size = new System.Drawing.Size(768, 21);
 			this.cmbSerialDriver.TabIndex = 5;
 			this.cmbSerialDriver.SelectionChangeCommitted += new System.EventHandler(this.cmbSerialDriver_SelectionChangeCommitted);
 			// 
 			// btnConnect
 			// 
 			this.btnConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnConnect.Location = new System.Drawing.Point(826, 8);
+			this.btnConnect.Location = new System.Drawing.Point(1155, 8);
 			this.btnConnect.Name = "btnConnect";
 			this.btnConnect.Size = new System.Drawing.Size(75, 23);
 			this.btnConnect.TabIndex = 6;
@@ -149,7 +149,7 @@
             "38400",
             "115200",
             "2000000"});
-			this.cmbBaudDriver.Location = new System.Drawing.Point(588, 10);
+			this.cmbBaudDriver.Location = new System.Drawing.Point(917, 10);
 			this.cmbBaudDriver.Name = "cmbBaudDriver";
 			this.cmbBaudDriver.Size = new System.Drawing.Size(95, 21);
 			this.cmbBaudDriver.TabIndex = 7;
@@ -159,7 +159,7 @@
 			// 
 			this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnSend.Enabled = false;
-			this.btnSend.Location = new System.Drawing.Point(826, 37);
+			this.btnSend.Location = new System.Drawing.Point(1155, 37);
 			this.btnSend.Name = "btnSend";
 			this.btnSend.Size = new System.Drawing.Size(75, 23);
 			this.btnSend.TabIndex = 8;
@@ -171,7 +171,7 @@
 			// 
 			this.lblLimits.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblLimits.AutoSize = true;
-			this.lblLimits.Location = new System.Drawing.Point(689, 40);
+			this.lblLimits.Location = new System.Drawing.Point(1018, 40);
 			this.lblLimits.Name = "lblLimits";
 			this.lblLimits.Size = new System.Drawing.Size(27, 13);
 			this.lblLimits.TabIndex = 9;
@@ -190,7 +190,7 @@
 			// 
 			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(522, 13);
+			this.label4.Location = new System.Drawing.Point(851, 13);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(58, 13);
 			this.label4.TabIndex = 11;
@@ -218,7 +218,7 @@
             "250000",
             "115200",
             "57600"});
-			this.cmbBaudMarlin.Location = new System.Drawing.Point(588, 64);
+			this.cmbBaudMarlin.Location = new System.Drawing.Point(917, 64);
 			this.cmbBaudMarlin.Name = "cmbBaudMarlin";
 			this.cmbBaudMarlin.Size = new System.Drawing.Size(95, 21);
 			this.cmbBaudMarlin.TabIndex = 14;
@@ -227,7 +227,7 @@
 			// btnConnectMarlin
 			// 
 			this.btnConnectMarlin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnConnectMarlin.Location = new System.Drawing.Point(826, 62);
+			this.btnConnectMarlin.Location = new System.Drawing.Point(1155, 62);
 			this.btnConnectMarlin.Name = "btnConnectMarlin";
 			this.btnConnectMarlin.Size = new System.Drawing.Size(75, 23);
 			this.btnConnectMarlin.TabIndex = 13;
@@ -243,7 +243,7 @@
 			this.cmbSerialMarlin.FormattingEnabled = true;
 			this.cmbSerialMarlin.Location = new System.Drawing.Point(77, 64);
 			this.cmbSerialMarlin.Name = "cmbSerialMarlin";
-			this.cmbSerialMarlin.Size = new System.Drawing.Size(439, 21);
+			this.cmbSerialMarlin.Size = new System.Drawing.Size(768, 21);
 			this.cmbSerialMarlin.TabIndex = 12;
 			this.cmbSerialMarlin.SelectionChangeCommitted += new System.EventHandler(this.cmbSerialMarlin_SelectionChangeCommitted);
 			// 
@@ -310,14 +310,14 @@
 			this.txtMarlinResponse.Location = new System.Drawing.Point(607, 110);
 			this.txtMarlinResponse.Multiline = true;
 			this.txtMarlinResponse.Name = "txtMarlinResponse";
-			this.txtMarlinResponse.Size = new System.Drawing.Size(294, 114);
+			this.txtMarlinResponse.Size = new System.Drawing.Size(623, 114);
 			this.txtMarlinResponse.TabIndex = 22;
 			// 
 			// btnDiscDriver
 			// 
 			this.btnDiscDriver.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnDiscDriver.Enabled = false;
-			this.btnDiscDriver.Location = new System.Drawing.Point(745, 8);
+			this.btnDiscDriver.Location = new System.Drawing.Point(1074, 8);
 			this.btnDiscDriver.Name = "btnDiscDriver";
 			this.btnDiscDriver.Size = new System.Drawing.Size(75, 23);
 			this.btnDiscDriver.TabIndex = 23;
@@ -329,7 +329,7 @@
 			// 
 			this.btnDiscMarlin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnDiscMarlin.Enabled = false;
-			this.btnDiscMarlin.Location = new System.Drawing.Point(745, 62);
+			this.btnDiscMarlin.Location = new System.Drawing.Point(1074, 62);
 			this.btnDiscMarlin.Name = "btnDiscMarlin";
 			this.btnDiscMarlin.Size = new System.Drawing.Size(75, 23);
 			this.btnDiscMarlin.TabIndex = 23;
@@ -365,7 +365,7 @@
 			this.tabControl1.Location = new System.Drawing.Point(12, 230);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(889, 323);
+			this.tabControl1.Size = new System.Drawing.Size(1218, 427);
 			this.tabControl1.TabIndex = 24;
 			// 
 			// tabLog
@@ -374,7 +374,7 @@
 			this.tabLog.Location = new System.Drawing.Point(4, 22);
 			this.tabLog.Name = "tabLog";
 			this.tabLog.Padding = new System.Windows.Forms.Padding(3);
-			this.tabLog.Size = new System.Drawing.Size(881, 297);
+			this.tabLog.Size = new System.Drawing.Size(1210, 401);
 			this.tabLog.TabIndex = 0;
 			this.tabLog.Text = "Log";
 			this.tabLog.UseVisualStyleBackColor = true;
@@ -405,7 +405,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(913, 565);
+			this.ClientSize = new System.Drawing.Size(1242, 669);
 			this.Controls.Add(this.btnStopTest);
 			this.Controls.Add(this.btnStartExternal);
 			this.Controls.Add(this.tabControl1);
