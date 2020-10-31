@@ -55,7 +55,8 @@ namespace S42B_terminal
 		{
 			InitializeComponent();
 
-
+			requireDriverCon = new Control[] { btnDiscDriver, btnStartExternal, btnStopTest, btnSend, btnPidTest };
+			requireMarlinCon = new Control[] { btnPidTest, btnDiscMarlin };
 		}
 
 		private void Form1_Load(object sender, EventArgs e)
@@ -525,14 +526,8 @@ namespace S42B_terminal
 			serialPortDriver.BaudRate = int.Parse(cmbBaudDriver.SelectedItem.ToString());
 
 			serialPortDriver.Open();
-			serialPortDriver.DiscardInBuffer();
-			btnSend.Enabled = true;
-			if (serialPortMarlin.IsOpen)
-				btnPidTest.Enabled = true;
 
-			btnDiscDriver.Enabled = true;
-			btnStartExternal.Enabled = true;
-			btnStopTest.Enabled = true;
+			onConnectionUpdate(driver: true);
 		}
 
 		private void btnConnectMarlin_Click(object sender, EventArgs e)
@@ -545,27 +540,64 @@ namespace S42B_terminal
 			serialPortMarlin.BaudRate = int.Parse(cmbBaudMarlin.Text);
 
 			serialPortMarlin.Open();
-			serialPortMarlin.DiscardInBuffer();
-			if (serialPortDriver.IsOpen)
-				btnPidTest.Enabled = true;
 
-			btnDiscMarlin.Enabled = true;
+			onConnectionUpdate(marlin: true);
 		}
 
 
 		private void btnDiscDriver_Click(object sender, EventArgs e)
 		{
 			serialPortDriver.Close();
-			btnDiscDriver.Enabled = false;
-			btnConnect.Enabled = true;
+			onConnectionUpdate(driver: false);
 		}
 
 		private void btnDiscMarlin_Click(object sender, EventArgs e)
 		{
 			serialPortMarlin.Close();
-			btnDiscMarlin.Enabled = false;
-			btnConnectMarlin.Enabled = true;
+			onConnectionUpdate(marlin: false);
 		}
+
+		private readonly Control[] requireDriverCon;
+		private readonly Control[] requireMarlinCon;
+
+		private void onConnectionUpdate(bool? marlin = null, bool? driver = null)
+		{
+			var eitherChanged = false;
+
+			if (driver.HasValue && driver.Value != driverConnected)
+			{
+				eitherChanged = true;
+				driverConnected = driver.Value;
+				btnConnect.Enabled = !driverConnected;
+				foreach (var x in requireDriverCon.Except(requireMarlinCon))
+				{
+					x.Enabled = driverConnected;
+				}
+			}
+
+			if (marlin.HasValue && marlin.Value != marlinConnected)
+			{
+				eitherChanged = true;
+				marlinConnected = marlin.Value;
+				btnConnectMarlin.Enabled = !marlinConnected;
+				foreach (var x in requireMarlinCon.Except(requireDriverCon))
+				{
+					x.Enabled = marlinConnected;
+				}
+			}
+
+			if (eitherChanged)
+			{
+				foreach (var x in requireDriverCon.Intersect(requireMarlinCon))
+				{
+					x.Enabled = marlinConnected && driverConnected;
+				}
+			}
+
+		}
+
+		private bool driverConnected = false;
+		private bool marlinConnected = false;
 
 		CommandInfo currentCommand;
 
