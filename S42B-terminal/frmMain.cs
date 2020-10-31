@@ -229,6 +229,12 @@ namespace S42B_terminal
 			Task.Delay(TimeSpan.FromSeconds(1))
 				.ContinueWith(new Action<Task>((t) =>
 				{
+					Invoke(new Action(() =>
+					{
+						btnPidTest.Enabled = true;
+						btnStartExternal.Enabled = true;
+					}));
+
 					List<TestPoint> copy;
 					lock (pointLog)
 					{
@@ -289,6 +295,7 @@ namespace S42B_terminal
 				pidPages.TryAdd(tp, control);
 
 				tabControl1.TabPages.Add(tp);
+				tabControl1.SelectedTab = tp;
 			}));
 		}
 
@@ -736,6 +743,8 @@ namespace S42B_terminal
 
 			// start commands by resetting line number
 			serialPortMarlin.WriteLine("M110 N0");
+			btnPidTest.Enabled = false;
+			btnStartExternal.Enabled = false;
 		}
 		int lineNumber = 0;
 		int? marlinQueueLastLineNoNext = null;
@@ -778,7 +787,6 @@ namespace S42B_terminal
 		{
 			marlinQueueLastLineNoNext = null;
 			stopPidSampling();
-			btnStartExternal.Enabled = true;
 		}
 
 		private TabPage getPointedTab(TabControl tc, Point position)
