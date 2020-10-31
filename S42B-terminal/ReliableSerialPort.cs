@@ -56,6 +56,11 @@ namespace S42B_terminal
 			 {
 				 try
 				 {
+					 if (!ar.IsCompleted || !IsOpen)
+					 {
+						 // port got closed halfway
+						 return;
+					 }
 					 int count = BaseStream.EndRead(ar);
 					 byte[] dst = new byte[count];
 					 Buffer.BlockCopy(buffer, 0, dst, 0, count);
