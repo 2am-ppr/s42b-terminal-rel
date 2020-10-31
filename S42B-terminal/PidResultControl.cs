@@ -165,8 +165,8 @@ namespace S42B_terminal
 				Key = "posError",
 				StartPosition = 0.55,
 				MajorGridlineStyle = LineStyle.Automatic,
-				Maximum = 300,
-				Minimum = -300,
+				Maximum = 500,
+				Minimum = -500,
 				MinorGridlineStyle = LineStyle.Dot,
 				MajorStep = 100
 			});
@@ -177,8 +177,8 @@ namespace S42B_terminal
 				Key = "velError",
 				EndPosition = 0.45,
 				MajorGridlineStyle = LineStyle.Automatic,
-				Maximum = 3000,
-				Minimum = -3000,
+				Maximum = 6000,
+				Minimum = -6000,
 				MinorGridlineStyle = LineStyle.Dot,
 				MajorStep = 1000
 			});
