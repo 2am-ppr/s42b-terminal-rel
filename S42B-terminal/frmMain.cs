@@ -120,8 +120,8 @@ namespace S42B_terminal
 			cmbBaudDriver.SelectedItem = Properties.Settings.Default.SerialBaudDriver.ToString();
 			cmbBaudMarlin.SelectedItem = Properties.Settings.Default.SerialBaudMarlin.ToString();
 
-			pidDivisor = Properties.Settings.Default.PidDivisor;
-			cmbPidDivisor.SelectedItem = pidDivisor.ToString();
+			pidDiviser = Properties.Settings.Default.PidDiviser;
+			cmbPidDiviser.SelectedItem = pidDiviser.ToString();
 
 			serialPortDriver.ReadTimeout = 200;
 			serialPortMarlin.ReadTimeout = 200;
@@ -250,13 +250,13 @@ namespace S42B_terminal
 			// start measuring PID error
 			pointLog = new List<TestPoint>();
 
-			driverParams["SDiv"] = pidDivisor;
+			driverParams["SDiv"] = pidDiviser;
 
 			// read PID params
 			sendDriverPacket(0xB0, 0xaaaa);
 
 			// start PID sampling
-			sendDriverPacket(0x55, pidDivisor);
+			sendDriverPacket(0x55, pidDiviser);
 		}
 
 		private void sendDriverPacket(byte function, ushort value)
@@ -661,10 +661,10 @@ namespace S42B_terminal
 		}
 
 
-		private void cmbPidDivisor_SelectionChangeCommitted(object sender, EventArgs e)
+		private void cmbPidDiviser_SelectionChangeCommitted(object sender, EventArgs e)
 		{
-			pidDivisor = Convert.ToUInt16(cmbPidDivisor.SelectedItem);
-			Properties.Settings.Default.PidDivisor = pidDivisor;
+			pidDiviser = Convert.ToUInt16(cmbPidDiviser.SelectedItem);
+			Properties.Settings.Default.PidDiviser = pidDiviser;
 			Properties.Settings.Default.Save();
 		}
 
@@ -701,7 +701,7 @@ namespace S42B_terminal
 			}
 		}
 
-		ushort pidDivisor = 0;
+		ushort pidDiviser = 0;
 
 		private void btnPidTest_Click(object sender, EventArgs e)
 		{

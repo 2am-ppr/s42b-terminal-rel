@@ -50,7 +50,7 @@
 			this.txtGcodeTest = new System.Windows.Forms.TextBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.btnPidTest = new System.Windows.Forms.Button();
-			this.cmbPidDivisor = new System.Windows.Forms.ComboBox();
+			this.cmbPidDiviser = new System.Windows.Forms.ComboBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.txtMarlinResponse = new System.Windows.Forms.TextBox();
 			this.btnDiscDriver = new System.Windows.Forms.Button();
@@ -279,10 +279,10 @@
 			this.btnPidTest.UseVisualStyleBackColor = true;
 			this.btnPidTest.Click += new System.EventHandler(this.btnPidTest_Click);
 			// 
-			// cmbPidDivisor
+			// cmbPidDiviser
 			// 
-			this.cmbPidDivisor.FormattingEnabled = true;
-			this.cmbPidDivisor.Items.AddRange(new object[] {
+			this.cmbPidDiviser.FormattingEnabled = true;
+			this.cmbPidDiviser.Items.AddRange(new object[] {
             "5",
             "10",
             "20",
@@ -291,11 +291,11 @@
             "200",
             "500",
             "1000"});
-			this.cmbPidDivisor.Location = new System.Drawing.Point(499, 110);
-			this.cmbPidDivisor.Name = "cmbPidDivisor";
-			this.cmbPidDivisor.Size = new System.Drawing.Size(102, 21);
-			this.cmbPidDivisor.TabIndex = 20;
-			this.cmbPidDivisor.SelectionChangeCommitted += new System.EventHandler(this.cmbPidDivisor_SelectionChangeCommitted);
+			this.cmbPidDiviser.Location = new System.Drawing.Point(499, 110);
+			this.cmbPidDiviser.Name = "cmbPidDiviser";
+			this.cmbPidDiviser.Size = new System.Drawing.Size(102, 21);
+			this.cmbPidDiviser.TabIndex = 20;
+			this.cmbPidDiviser.SelectionChangeCommitted += new System.EventHandler(this.cmbPidDiviser_SelectionChangeCommitted);
 			// 
 			// label7
 			// 
@@ -304,7 +304,7 @@
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(77, 13);
 			this.label7.TabIndex = 21;
-			this.label7.Text = "Sample Divisor";
+			this.label7.Text = "Sample Diviser";
 			// 
 			// txtMarlinResponse
 			// 
@@ -418,7 +418,7 @@
 			this.Controls.Add(this.btnDiscDriver);
 			this.Controls.Add(this.txtMarlinResponse);
 			this.Controls.Add(this.label7);
-			this.Controls.Add(this.cmbPidDivisor);
+			this.Controls.Add(this.cmbPidDiviser);
 			this.Controls.Add(this.btnPidTest);
 			this.Controls.Add(this.label8);
 			this.Controls.Add(this.label6);
@@ -472,7 +472,7 @@
 		private System.Windows.Forms.TextBox txtGcodeTest;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Button btnPidTest;
-		private System.Windows.Forms.ComboBox cmbPidDivisor;
+		private System.Windows.Forms.ComboBox cmbPidDiviser;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.TextBox txtMarlinResponse;
 		private System.Windows.Forms.Button btnDiscDriver;

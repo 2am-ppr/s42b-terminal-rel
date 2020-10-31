@@ -74,12 +74,12 @@ namespace S42B_terminal.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("20")]
-        public ushort PidDivisor {
+        public ushort PidDiviser {
             get {
-                return ((ushort)(this["PidDivisor"]));
+                return ((ushort)(this["PidDiviser"]));
             }
             set {
-                this["PidDivisor"] = value;
+                this["PidDiviser"] = value;
             }
         }
     }
