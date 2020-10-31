@@ -367,6 +367,7 @@
 			this.tabControl1.SelectedIndex = 0;
 			this.tabControl1.Size = new System.Drawing.Size(1218, 427);
 			this.tabControl1.TabIndex = 24;
+			this.tabControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseUp);
 			// 
 			// tabLog
 			// 

@@ -131,6 +131,15 @@ namespace S42B_terminal
 			serialPortMarlin.DataReceived += SerialPortMarlin_DataReceived;
 			serialPortMarlin.ErrorReceived += SerialPortMarlin_ErrorReceived;
 			serialPortMarlin.NewLine = "\n";
+
+			pidTabContextMenu = new ContextMenu(new MenuItem[] {
+				new MenuItem("Rename...", OnTabRename),
+				new MenuItem("Move to start", OnTabMoveStart),
+				new MenuItem("Move to end", OnTabMoveEnd),
+				new MenuItem("-"),
+				new MenuItem("Close", OnTabClose),
+			});
+
 		}
 
 		private void SerialPortMarlin_ErrorReceived(object sender, System.IO.Ports.SerialErrorReceivedEventArgs e)
@@ -731,6 +740,76 @@ namespace S42B_terminal
 			btnStartExternal.Enabled = true;
 		}
 
+		private TabPage getPointedTab(TabControl tc, Point position)
+		{
+			// skip log tab
+			for (int i = 1; i < tc.TabPages.Count; i++)
+				if (tc.GetTabRect(i).Contains(position))
+					return tc.TabPages[i];
+
+			return null;
+		}
+
+		ContextMenu pidTabContextMenu = null;
+		TabPage pidTabContextMenuTarget = null;
+
+		void OnTabClose(object sender, EventArgs e)
+		{
+			tabControl1.TabPages.Remove(pidTabContextMenuTarget);
+			pidTabContextMenuTarget = null;
+		}
+
+		void OnTabMoveEnd(object sender, EventArgs e)
+		{
+			tabControl1.SuspendLayout();
+
+			var active = tabControl1.SelectedTab;
+			tabControl1.TabPages.Remove(pidTabContextMenuTarget);
+			tabControl1.TabPages.Add(pidTabContextMenuTarget);
+			if (active == pidTabContextMenuTarget)
+				tabControl1.SelectedTab = pidTabContextMenuTarget;
+			pidTabContextMenuTarget = null;
+
+			tabControl1.ResumeLayout();
+		}
+
+		void OnTabMoveStart(object sender, EventArgs e)
+		{
+			tabControl1.SuspendLayout();
+
+			var active = tabControl1.SelectedTab;
+			tabControl1.TabPages.Remove(pidTabContextMenuTarget);
+			tabControl1.TabPages.Insert(1, pidTabContextMenuTarget);
+			if (active == pidTabContextMenuTarget)
+				tabControl1.SelectedTab = pidTabContextMenuTarget;
+			pidTabContextMenuTarget = null;
+
+			tabControl1.ResumeLayout();
+		}
+
+		void OnTabRename(object sender, EventArgs e)
+		{
+			pidTabContextMenuTarget.Text = Prompt.ShowDialog(pidTabContextMenuTarget.Text, "Rename");
+		}
+
+		private void tabControl1_MouseUp(object sender, MouseEventArgs e)
+		{
+			TabPage pointedTab = getPointedTab(tabControl1, e.Location);
+			if (pointedTab != null)
+			{
+				if (e.Button == MouseButtons.Right)
+				{
+					pidTabContextMenuTarget = pointedTab;
+					pidTabContextMenu.Show(this, this.PointToClient(Cursor.Position));
+				}
+
+				if (e.Button == MouseButtons.Middle)
+				{
+					pidTabContextMenuTarget = pointedTab;
+					OnTabClose(this, e);
+				}
+			}
+		}
 	}
 
 	[Flags]
