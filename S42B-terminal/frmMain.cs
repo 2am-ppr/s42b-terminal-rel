@@ -278,7 +278,7 @@ namespace S42B_terminal
 			//throw new NotImplementedException();
 		}
 
-		private byte[] binaryBuffer = new byte[1024*1024*100];
+		private byte[] binaryBuffer = new byte[1024*1024*10];
 		private int? binaryWritePointer = null;
 
 		private void SerialPortDriver_DataReceived(object sender, DataReceivedArgs e)

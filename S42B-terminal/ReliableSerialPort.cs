@@ -46,7 +46,7 @@ namespace S42B_terminal
 
 		private void ContinuousRead()
 		{
-			byte[] buffer = new byte[1024*1024*100];
+			byte[] buffer = new byte[1024*1024*10];
 			Action kickoffRead = null;
 			kickoffRead = (Action)(() => {
 				if (!IsOpen)
