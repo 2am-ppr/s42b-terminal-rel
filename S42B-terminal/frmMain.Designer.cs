@@ -278,11 +278,14 @@
 			// 
 			this.cmbPidDivisor.FormattingEnabled = true;
 			this.cmbPidDivisor.Items.AddRange(new object[] {
+            "5",
             "10",
             "20",
             "50",
             "100",
-            "500"});
+            "200",
+            "500",
+            "1000"});
 			this.cmbPidDivisor.Location = new System.Drawing.Point(327, 110);
 			this.cmbPidDivisor.Name = "cmbPidDivisor";
 			this.cmbPidDivisor.Size = new System.Drawing.Size(102, 21);
