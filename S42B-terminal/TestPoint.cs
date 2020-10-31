@@ -8,7 +8,7 @@ namespace S42B_terminal
 {
 	public class TestPoint
 	{
-		public int Sequence { get; set; }
+		public uint Sequence { get; set; }
 
 		public int PosMeasured { get; set; }
 		public int PosTarget { get; set; }

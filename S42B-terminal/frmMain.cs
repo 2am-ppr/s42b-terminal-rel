@@ -239,7 +239,6 @@ namespace S42B_terminal
 		private void startPidSampling()
 		{
 			// start measuring PID error
-			sequence = 0;
 			pointLog = new List<TestPoint>();
 
 			// read PID params
@@ -426,37 +425,41 @@ namespace S42B_terminal
 							// pid scope
 
 							TestPoint tp = new TestPoint();
-							tp.Sequence = sequence++;
-
-							tp.PosMeasured =
+							tp.Sequence = (uint)(
 								  binaryBuffer[4 + 0] << 24
 								| binaryBuffer[5 + 0] << 16
 								| binaryBuffer[6 + 0] << 8
-								| binaryBuffer[7 + 0] << 0;
+								| binaryBuffer[7 + 0] << 0);
 
-							tp.PosTarget =
+							tp.PosMeasured =
 								  binaryBuffer[4 + 4] << 24
 								| binaryBuffer[5 + 4] << 16
 								| binaryBuffer[6 + 4] << 8
 								| binaryBuffer[7 + 4] << 0;
 
-							tp.VelMeasured = 
+							tp.PosTarget = 
 								  binaryBuffer[4 + 8] << 24
 								| binaryBuffer[5 + 8] << 16
 								| binaryBuffer[6 + 8] << 8
 								| binaryBuffer[7 + 8] << 0;
 
-							tp.VelTarget =
+							tp.VelMeasured =
 								  binaryBuffer[4 + 12] << 24
 								| binaryBuffer[5 + 12] << 16
 								| binaryBuffer[6 + 12] << 8
 								| binaryBuffer[7 + 12] << 0;
 
-							tp.PidI =
+							tp.VelTarget =
 								  binaryBuffer[4 + 16] << 24
 								| binaryBuffer[5 + 16] << 16
 								| binaryBuffer[6 + 16] << 8
 								| binaryBuffer[7 + 16] << 0;
+
+							tp.PidI =
+								  binaryBuffer[4 + 20] << 24
+								| binaryBuffer[5 + 20] << 16
+								| binaryBuffer[6 + 20] << 8
+								| binaryBuffer[7 + 20] << 0;
 
 
 							bool log = false;
@@ -506,8 +509,6 @@ namespace S42B_terminal
 
 		static readonly int silenceMax = 30;
 		int silence = silenceMax;
-
-		int sequence = 0;
 
 		static Regex serialRe = new Regex(@"\((COM\d+)\)");
 

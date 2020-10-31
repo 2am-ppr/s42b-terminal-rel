@@ -84,6 +84,7 @@ namespace S42B_terminal
 			};
 
 			var startPos = pointLog.First().PosTarget;
+			var startSeq = pointLog.First().Sequence;
 
 			var header = pointLog.TakeWhile(x => Math.Abs(x.PosError) < 6 && x.PosTarget == startPos).Count();
 			if (header != pointLog.Count)
@@ -94,6 +95,11 @@ namespace S42B_terminal
 			if (tail != pointLog.Count)
 				pointLog.RemoveRange(pointLog.Count - tail, tail);
 
+
+			foreach(var x in pointLog)
+			{
+				x.Sequence -= startSeq;
+			}
 
 			var colors = new[] { "0072bd", "f95319", "edb120", "9e2ffe", "77ac30", "4dbeee", "a2142f" };
 
