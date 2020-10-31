@@ -231,7 +231,7 @@ namespace S42B_terminal
 				{
 					Invoke(new Action(() =>
 					{
-						btnPidTest.Enabled = true;
+						btnPidTest.Enabled = btnDiscMarlin.Enabled;
 						btnStartExternal.Enabled = true;
 					}));
 
