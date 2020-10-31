@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
@@ -68,7 +69,7 @@ namespace S42B_terminal
 				 }
 				 catch (Exception exception)
 				 {
-					 Console.WriteLine("OptimizedSerialPort exception !");
+					 Console.WriteLine("OptimizedSerialPort exception !" + exception.ToString());
 				 }
 				 kickoffRead();
 			 }, null);
@@ -77,7 +78,7 @@ namespace S42B_terminal
 		}
 
 		public delegate void DataReceivedEventHandler(object sender, DataReceivedArgs e);
-		public event EventHandler<DataReceivedArgs> DataReceived;
+		public new event EventHandler<DataReceivedArgs> DataReceived;
 		public virtual void OnDataReceived(byte[] data)
 		{
 			var handler = DataReceived;
