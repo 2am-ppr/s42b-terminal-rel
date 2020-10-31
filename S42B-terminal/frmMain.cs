@@ -217,7 +217,12 @@ namespace S42B_terminal
 									Task.Delay(TimeSpan.FromSeconds(1))
 										.ContinueWith(new Action<Task>((t) =>
 										{
-											refreshChart();
+											List<TestPoint> copy;
+											lock (pointLog)
+											{
+												copy = pointLog.ToList();
+											}
+											refreshChart(copy);
 										}));
 
 								}
@@ -250,14 +255,14 @@ namespace S42B_terminal
 
 		int pageSeq = 1;
 
-		private void refreshChart()
+		private void refreshChart(List<TestPoint> points)
 		{
-			if (!pointLog.Any())
+			if (!points.Any())
 			{
-				appendLogText("failed to log any PID datapoints");
+				appendLogText("failed to log any PID datapoints\r\n");
 				return;
 			}
-			var control = new PidResultControl(pointLog);
+			var control = new PidResultControl(points);
 
 			BeginInvoke(new Action(() =>
 			{
@@ -433,7 +438,10 @@ namespace S42B_terminal
 
 							if (log)
 							{
-								pointLog.Add(tp);
+								lock (pointLog)
+								{
+									pointLog.Add(tp);
+								}
 							}
 						}
 						var extraBytes = filledLen - expectedLen;
