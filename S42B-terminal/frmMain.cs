@@ -250,6 +250,8 @@ namespace S42B_terminal
 			// start measuring PID error
 			pointLog = new List<TestPoint>();
 
+			driverParams["SDiv"] = pidDivisor;
+
 			// read PID params
 			sendDriverPacket(0xB0, 0xaaaa);
 
@@ -359,6 +361,7 @@ namespace S42B_terminal
 
 		Dictionary<string, int> driverParams = new Dictionary<string, int>()
 		{
+			{"SDiv", 0 },
 			{"P", 0 },
 			{"I", 0 },
 			{"D", 0 },

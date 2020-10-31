@@ -29,7 +29,7 @@ namespace S42B_terminal
 			InitializeComponent();
 		}
 
-		private static readonly Padding labelPadding = new Padding(10, 5, 2, 10);
+		private static readonly Padding labelPadding = new Padding(5, 5, 2, 10);
 
 		protected override void OnLoad(EventArgs e)
 		{
@@ -38,19 +38,19 @@ namespace S42B_terminal
 			plotView1.Model = model;
 			var things = getAttributes();
 
-			foreach (var t in things)
+			foreach (var t in pars)
 			{
 				var label = new Label() { AutoSize = true, Padding = labelPadding, Text = t.Key };
-				var box = new TextBox() { Text = t.Value.ToString("0.##"), MaxLength = 8, ReadOnly = true, Width = 40 };
+				var box = new TextBox() { Text = t.Value.ToString("0.##"), MaxLength = 8, ReadOnly = true, Width = 30 };
 
 				pnlInfo.Controls.Add(label);
 				pnlInfo.Controls.Add(box);
 			}
 
-			foreach (var t in pars)
+			foreach (var t in things)
 			{
 				var label = new Label() { AutoSize = true, Padding = labelPadding, Text = t.Key };
-				var box = new TextBox() { Text = t.Value.ToString("0.##"), MaxLength = 8, ReadOnly = true, Width = 30 };
+				var box = new TextBox() { Text = t.Value.ToString("0.##"), MaxLength = 8, ReadOnly = true, Width = 40 };
 
 				pnlInfo.Controls.Add(label);
 				pnlInfo.Controls.Add(box);
