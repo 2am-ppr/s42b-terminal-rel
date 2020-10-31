@@ -83,7 +83,7 @@ namespace S42B_terminal
 				pointLog.RemoveRange(pointLog.Count - tail, tail);
 
 
-			var colors = new[] { "0072bd", "d95319", "edb120", "7e2f8e", "77ac30", "4dbeee", "a2142f" };
+			var colors = new[] { "0072bd", "f95319", "edb120", "9e2ffe", "77ac30", "4dbeee", "a2142f" };
 
 			foreach (var field in new[] { "PosMeasured", "PosTarget", "PosError", "VelMeasured", "VelTarget", "VelError", "PidI" })
 			{
@@ -124,6 +124,12 @@ namespace S42B_terminal
 				else
 				{
 					s.Color = color;
+				}
+
+				if (s.DataFieldY == "PosError")
+				{
+					s.MarkerType = MarkerType.Circle;
+					s.MarkerStroke = color;
 				}
 			}
 
