@@ -56,7 +56,7 @@ namespace S42B_terminal
 			foreach(var t in pars)
 			{
 				var label = new Label() { AutoSize = true, Padding = labelPadding, Text = t.Key };
-				var box = new TextBox() { Text = t.Value.ToString("#.##"), MaxLength = 8, ReadOnly = true, Width = 30 };
+				var box = new TextBox() { Text = t.Value.ToString("0.##"), MaxLength = 8, ReadOnly = true, Width = 30 };
 
 				pnlInfo.Controls.Add(label);
 				pnlInfo.Controls.Add(box);
