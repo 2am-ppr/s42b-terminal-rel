@@ -120,6 +120,9 @@ namespace S42B_terminal
 			cmbBaudDriver.SelectedItem = Properties.Settings.Default.SerialBaudDriver.ToString();
 			cmbBaudMarlin.SelectedItem = Properties.Settings.Default.SerialBaudMarlin.ToString();
 
+			txtGcodePrep.Text = Properties.Settings.Default.GcodePrep;
+			txtGcodeTest.Text = Properties.Settings.Default.GcodeTest;
+
 			pidDiviser = Properties.Settings.Default.PidDiviser;
 			cmbPidDiviser.SelectedItem = pidDiviser.ToString();
 
@@ -927,6 +930,28 @@ namespace S42B_terminal
 					OnTabClose(this, e);
 				}
 			}
+		}
+
+		private void btnGcodePrepSave_Click(object sender, EventArgs e)
+		{
+			Properties.Settings.Default.GcodePrep = txtGcodePrep.Text;
+			Properties.Settings.Default.Save();
+		}
+
+		private void btnGcodeTestSave_Click(object sender, EventArgs e)
+		{
+			Properties.Settings.Default.GcodeTest = txtGcodeTest.Text;
+			Properties.Settings.Default.Save();
+		}
+
+		private void btnGcodePrepRest_Click(object sender, EventArgs e)
+		{
+			txtGcodePrep.Text = Properties.Settings.Default.GcodePrep;
+		}
+
+		private void btnGcodeTestRest_Click(object sender, EventArgs e)
+		{
+			txtGcodeTest.Text = Properties.Settings.Default.GcodeTest;
 		}
 	}
 

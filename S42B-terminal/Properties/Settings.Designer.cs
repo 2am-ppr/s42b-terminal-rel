@@ -82,5 +82,31 @@ namespace S42B_terminal.Properties {
                 this["PidDiviser"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("G28 O1 ; home if not homed\r\nM201 X36000.00 Y36000.00 ; max acceleration\r\nM203 X36" +
+            "0000.00 Y360000.00 ; max feed\r\nM204 P36000.00 R36000.00 T36000.00 ; printing acc" +
+            "el\r\nG0 X-100Y10 F100000 ; prep move\r\nG4 P100 ; dwell")]
+        public string GcodePrep {
+            get {
+                return ((string)(this["GcodePrep"]));
+            }
+            set {
+                this["GcodePrep"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("G0 X100 ; move\r\nG4 P100 ; dwell\r\nG0 X-100 ; move\r\nG4 P100 ; dwell")]
+        public string GcodeTest {
+            get {
+                return ((string)(this["GcodeTest"]));
+            }
+            set {
+                this["GcodeTest"] = value;
+            }
+        }
     }
 }

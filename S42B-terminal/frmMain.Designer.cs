@@ -29,7 +29,6 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.cmbCommand = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
@@ -61,6 +60,10 @@
 			this.tabLog = new System.Windows.Forms.TabPage();
 			this.btnStartExternal = new System.Windows.Forms.Button();
 			this.btnStopTest = new System.Windows.Forms.Button();
+			this.btnGcodePrepSave = new System.Windows.Forms.Button();
+			this.btnGcodeTestSave = new System.Windows.Forms.Button();
+			this.btnGcodePrepRest = new System.Windows.Forms.Button();
+			this.btnGcodeTestRest = new System.Windows.Forms.Button();
 			this.tabControl1.SuspendLayout();
 			this.tabLog.SuspendLayout();
 			this.SuspendLayout();
@@ -251,13 +254,12 @@
 			// 
 			// txtGcodeTest
 			// 
-			this.txtGcodeTest.Location = new System.Drawing.Point(258, 110);
+			this.txtGcodeTest.Location = new System.Drawing.Point(258, 118);
 			this.txtGcodeTest.Multiline = true;
 			this.txtGcodeTest.Name = "txtGcodeTest";
 			this.txtGcodeTest.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.txtGcodeTest.Size = new System.Drawing.Size(236, 114);
+			this.txtGcodeTest.Size = new System.Drawing.Size(236, 106);
 			this.txtGcodeTest.TabIndex = 16;
-			this.txtGcodeTest.Text = "G0 X100 ; move\r\nG4 P100 ; dwell\r\nG0 X-100 ; move\r\nG4 P100 ; dwell";
 			// 
 			// label6
 			// 
@@ -343,13 +345,12 @@
 			// 
 			// txtGcodePrep
 			// 
-			this.txtGcodePrep.Location = new System.Drawing.Point(16, 110);
+			this.txtGcodePrep.Location = new System.Drawing.Point(16, 118);
 			this.txtGcodePrep.Multiline = true;
 			this.txtGcodePrep.Name = "txtGcodePrep";
 			this.txtGcodePrep.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.txtGcodePrep.Size = new System.Drawing.Size(236, 114);
+			this.txtGcodePrep.Size = new System.Drawing.Size(236, 106);
 			this.txtGcodePrep.TabIndex = 16;
-			this.txtGcodePrep.Text = resources.GetString("txtGcodePrep.Text");
 			// 
 			// label8
 			// 
@@ -406,11 +407,55 @@
 			this.btnStopTest.UseVisualStyleBackColor = true;
 			this.btnStopTest.Click += new System.EventHandler(this.btnStopTest_Click);
 			// 
+			// btnGcodePrepSave
+			// 
+			this.btnGcodePrepSave.Location = new System.Drawing.Point(177, 89);
+			this.btnGcodePrepSave.Name = "btnGcodePrepSave";
+			this.btnGcodePrepSave.Size = new System.Drawing.Size(75, 23);
+			this.btnGcodePrepSave.TabIndex = 26;
+			this.btnGcodePrepSave.Text = "Save";
+			this.btnGcodePrepSave.UseVisualStyleBackColor = true;
+			this.btnGcodePrepSave.Click += new System.EventHandler(this.btnGcodePrepSave_Click);
+			// 
+			// btnGcodeTestSave
+			// 
+			this.btnGcodeTestSave.Location = new System.Drawing.Point(418, 89);
+			this.btnGcodeTestSave.Name = "btnGcodeTestSave";
+			this.btnGcodeTestSave.Size = new System.Drawing.Size(75, 23);
+			this.btnGcodeTestSave.TabIndex = 27;
+			this.btnGcodeTestSave.Text = "Save";
+			this.btnGcodeTestSave.UseVisualStyleBackColor = true;
+			this.btnGcodeTestSave.Click += new System.EventHandler(this.btnGcodeTestSave_Click);
+			// 
+			// btnGcodePrepRest
+			// 
+			this.btnGcodePrepRest.Location = new System.Drawing.Point(96, 89);
+			this.btnGcodePrepRest.Name = "btnGcodePrepRest";
+			this.btnGcodePrepRest.Size = new System.Drawing.Size(75, 23);
+			this.btnGcodePrepRest.TabIndex = 26;
+			this.btnGcodePrepRest.Text = "Restore";
+			this.btnGcodePrepRest.UseVisualStyleBackColor = true;
+			this.btnGcodePrepRest.Click += new System.EventHandler(this.btnGcodePrepRest_Click);
+			// 
+			// btnGcodeTestRest
+			// 
+			this.btnGcodeTestRest.Location = new System.Drawing.Point(337, 89);
+			this.btnGcodeTestRest.Name = "btnGcodeTestRest";
+			this.btnGcodeTestRest.Size = new System.Drawing.Size(75, 23);
+			this.btnGcodeTestRest.TabIndex = 26;
+			this.btnGcodeTestRest.Text = "Restore";
+			this.btnGcodeTestRest.UseVisualStyleBackColor = true;
+			this.btnGcodeTestRest.Click += new System.EventHandler(this.btnGcodeTestRest_Click);
+			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1242, 669);
+			this.Controls.Add(this.btnGcodeTestSave);
+			this.Controls.Add(this.btnGcodeTestRest);
+			this.Controls.Add(this.btnGcodePrepRest);
+			this.Controls.Add(this.btnGcodePrepSave);
 			this.Controls.Add(this.btnStopTest);
 			this.Controls.Add(this.btnStartExternal);
 			this.Controls.Add(this.tabControl1);
@@ -483,6 +528,10 @@
 		private System.Windows.Forms.TabPage tabLog;
 		private System.Windows.Forms.Button btnStartExternal;
 		private System.Windows.Forms.Button btnStopTest;
+		private System.Windows.Forms.Button btnGcodePrepSave;
+		private System.Windows.Forms.Button btnGcodeTestSave;
+		private System.Windows.Forms.Button btnGcodePrepRest;
+		private System.Windows.Forms.Button btnGcodeTestRest;
 	}
 }
 
