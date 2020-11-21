@@ -50,6 +50,12 @@ namespace S42B_terminal
 			new CommandInfo(Parameter.DirPolarity, "Set Dir Polarity", 0xA6, 0x11, validValues: new ushort[]{0x11, 0x22}),
 
 
+			new CommandInfo(Parameter.ClosedLoop, "Set Closed Loop Mode", 0xA9, 0x01, validValues: new ushort[]{0x01, 0x00}),
+
+
+			new CommandInfo(Parameter.None, "Start Calibration", 0xAF, 0x11),
+
+
 		};
 
 		public frmMain()
@@ -965,7 +971,8 @@ namespace S42B_terminal
 		Current = 8,
 		Microstep = 16,
 		EnablePolarity = 32,
-		DirPolarity = 64
+		DirPolarity = 64,
+		ClosedLoop = 128
 	}
 
 	public class CommandInfo
