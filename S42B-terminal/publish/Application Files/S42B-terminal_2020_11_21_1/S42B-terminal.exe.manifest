@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="S42B-terminal.exe" version="2020.11.21.1" publicKeyToken="c6eca057f3f6b81e" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="S42B-terminal" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="S42B-terminal.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OxyPlot.dll" size="549376">
+      <assemblyIdentity name="OxyPlot" version="2.0.0.0" publicKeyToken="638079A8F0BD61E9" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>vK0M/swEOEMAi0ryfXTkz0Zjigbl2dinsJ/6tuWCmpg=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OxyPlot.WindowsForms.dll" size="26112">
+      <assemblyIdentity name="OxyPlot.WindowsForms" version="2.0.0.0" publicKeyToken="245EACD6B5D2D338" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>6UdTpLPH8FR56YoICGKAHyuqvXSqXEpbZjcezugpirE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="S42B-terminal.exe" size="53680">
+      <assemblyIdentity name="S42B-terminal" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>fsXbCrDvd3X016qw8lD0KMQY14PSK4ahIQFu9weff6k=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="S42B-terminal.exe.config" size="1946">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>j3cJOQaL1qd0NrqR//QA9beznTiITI6mXx5ut6sKA+Y=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=github.com/IgorYeremin" issuerKeyHash="a866ad25347614fd4569aff1d942e5eaac5c7d9f" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>Z4V+5UmARcYwUzedk1X+SCoqUm5F+dJ7iMrvYa/eagU=</DigestValue></Reference></SignedInfo><SignatureValue>KcaS2MT3xyPbs6h0qW3rrjBXGoMJKOl6S4iq5e1Fe3Noyt0Gvmdlof5hlYbEwZaN+iktozW4UbzlWb2R419BmdAKd9CRTnln+cnz8673R8dUVF2dkYXy3DTiS6Gd4hVMt5iUwNh628M6RFQZQXpwUYQw5gGHfI1I/Q1lmd2ipKgoFC4ahWa2vVoPX2jop9bg3Ger9SkhSviKQM7ffA4CNpurJqU9FxamnG3lY8sKl2AeVzKAvSRl7IAWpWQnO3gaoDIJp/J28GB3bVFNp+gcgHLwquhUoNmW40zogVtxLIuSUQA8ypG19eHse7BewQpbTQlMJwgB20LYWWMu3I22Ng==</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>7mkhUXK/DTMPIRuqtXP/AvcnKNFJ0jGc5vu2UhFI+uWZRUMZkV9stj80L82a/g9ZYYT5tHtRUQgqnSqKIR9c8kvKbt5yWl4Cga+3IgPuh9KutXWLmyX4egiYxHPPFqSekSEk3wvMAtR27Yb2Q/gKwgvk+wCrG9HzpZ3QTWvzjMwtci3dVBFREp9Zz2NWjnO0ShRuJRqyY/+sixjQrCt1KoSKyWNxGJeTroGyRzk6WCsTqXBIAybSyXSdoaWdqan0X9K3hvo/NVp9k1Ey6cHHeJKiLrdxpRJ09AhSlmpIT0Paf1tysCsjvT85GOetq/gICbICH7gJl7rpsIJ96wG9wQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="056adeaf61efca887bd2f9456e522a2a48fe55939d375330c6458049e57e8567" Description="" Url=""><as:assemblyIdentity name="S42B-terminal.exe" version="2020.11.21.1" publicKeyToken="c6eca057f3f6b81e" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=github.com/IgorYeremin</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>f27l5DTILq65AnPMbzI92glydncTixe9NjINBYeRPZI=</DigestValue></Reference></SignedInfo><SignatureValue>7bnxjzFm7w7kLSamSEv346wXmlA64J8gLORidxxgpGu98JQpXZtfw/Z6qXEqa7Z0ZJTqX2ERJJwQ9ZqhdXqEunltC90jq9mqVzouKljFomAUPER7qe2SK6Uv9A5hMpQvIfc1TfNnJTgpst7q5yXPXMw2dSk94E92v5unmjU7pMMaK8r9Q8KgyO+exMhgfVRamlulgfMC5C/hcNw2UFVzniHDU5bE0QTtwoKw+TqJ0ZQkZObZFKscjIMOzLMDe+qvcVmQBphrJ2BI6m5mfJ3jwG9kUPfsEcZXSFbEzI+N80mbP/8nFCzn/sbyfFuKdp4RY2AAgIuvl/RmIUuRJtEmTA==</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>7mkhUXK/DTMPIRuqtXP/AvcnKNFJ0jGc5vu2UhFI+uWZRUMZkV9stj80L82a/g9ZYYT5tHtRUQgqnSqKIR9c8kvKbt5yWl4Cga+3IgPuh9KutXWLmyX4egiYxHPPFqSekSEk3wvMAtR27Yb2Q/gKwgvk+wCrG9HzpZ3QTWvzjMwtci3dVBFREp9Zz2NWjnO0ShRuJRqyY/+sixjQrCt1KoSKyWNxGJeTroGyRzk6WCsTqXBIAybSyXSdoaWdqan0X9K3hvo/NVp9k1Ey6cHHeJKiLrdxpRJ09AhSlmpIT0Paf1tysCsjvT85GOetq/gICbICH7gJl7rpsIJ96wG9wQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIDNTCCAh2gAwIBAgIQbuHksvjHIoBJQybX3f+nCjANBgkqhkiG9w0BAQsFADAhMR8wHQYDVQQDDBZnaXRodWIuY29tL0lnb3JZZXJlbWluMB4XDTIwMTEyMTE2NTcxOVoXDTMwMTEyMTE3MDcxOVowITEfMB0GA1UEAwwWZ2l0aHViLmNvbS9JZ29yWWVyZW1pbjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAO5pIVFyvw0zDyEbqrVz/wL3JyjRSdIxnOb7tlIRSPrlmUVDGZFfbLY/NC/Nmv4PWWGE+bR7UVEIKp0qiiEfXPJLym7eclpeAoGvtyID7ofSrrV1i5sl+HoImMRzzxaknpEhJN8LzALUdu2G9kP4CsIL5PsAqxvR86Wd0E1r84zMLXIt3VQRURKfWc9jVo5ztEoUbiUasmP/rIsY0KwrdSqEisljcRiXk66Bskc5OlgrE6lwSAMm0sl0naGlnamp9F/St4b6PzVafZNRMunBx3iSoi63caUSdPQIUpZqSE9D2n9bcrArI70/ORjnrav4CAmyAh+4CZe66bCCfesBvcECAwEAAaNpMGcwDgYDVR0PAQH/BAQDAgeAMBMGA1UdJQQMMAoGCCsGAQUFBwMDMCEGA1UdEQQaMBiCFmdpdGh1Yi5jb20vSWdvclllcmVtaW4wHQYDVR0OBBYEFKhmrSU0dhT9RWmv8dlC5eqsXH2fMA0GCSqGSIb3DQEBCwUAA4IBAQBSe56lTEecULPDGRaOaj0NzVDxAxE6EYLslIXmJD/SgCcyQdgVuBfQD008z9nar8bgiZ0fNobRNVw3FtUguOZpmBRRVEFPIpqgfuo/B+0ZI5lo1/kJF2mp9rhhzx4E+lnsP6Jnbv+qbgHA2/EmMytR0zVa+Aohsi/izzQJaXJtZjG+htDJoaxPnmq+dDYgySwty6NuGAKTIxgZqVJSZRlvFvSCOYlseI5j/k8a9B+0wJHZgwEp4BLqSkjifzuwbHcJKc1XaI/Osc97BtqeCKzaz65wEratM/ny8mlD9i6wQQDrlRgh0oQjpQH8uCjZvPCWAO5khW8OhMtcftsqmJ0g</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
