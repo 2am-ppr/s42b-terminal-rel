@@ -366,7 +366,7 @@ namespace S42B_terminal
 
 		StringBuilder sb = new StringBuilder(50000);
 
-		Regex reDriverParam = new Regex(@"^(P|I|D|FF|IU|CL) --.* =(\d+)");
+		Regex reDriverParam = new Regex(@"^(P|I|D|FF|IU|CL) --.* =(\d+)", RegexOptions.Multiline);
 
 		Dictionary<string, int> driverParams = new Dictionary<string, int>()
 		{
