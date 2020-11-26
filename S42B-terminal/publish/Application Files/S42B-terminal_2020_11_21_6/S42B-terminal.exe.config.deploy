@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <configSections>
+        <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
+            <section name="S42B_terminal.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+        </sectionGroup>
+    </configSections>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2"/>
+    </startup>
+    <userSettings>
+        <S42B_terminal.Properties.Settings>
+            <setting name="SerialPortDriver" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="SerialPortMarlin" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="SerialBaudDriver" serializeAs="String">
+                <value>250000</value>
+            </setting>
+            <setting name="SerialBaudMarlin" serializeAs="String">
+                <value>250000</value>
+            </setting>
+            <setting name="PidDiviser" serializeAs="String">
+                <value>20</value>
+            </setting>
+            <setting name="GcodePrep" serializeAs="String">
+                <value>G28 O1 ; home if not homed
+M201 X36000.00 Y36000.00 ; max acceleration
+M203 X360000.00 Y360000.00 ; max feed
+M204 P36000.00 R36000.00 T36000.00 ; printing accel
+G0 X-100Y10 F100000 ; prep move
+G4 P100 ; dwell</value>
+            </setting>
+            <setting name="GcodeTest" serializeAs="String">
+                <value>G0 X100 ; move
+G4 P100 ; dwell
+G0 X-100 ; move
+G4 P100 ; dwell</value>
+            </setting>
+        </S42B_terminal.Properties.Settings>
+    </userSettings>
+</configuration>
