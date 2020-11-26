@@ -366,7 +366,7 @@ namespace S42B_terminal
 
 		StringBuilder sb = new StringBuilder(50000);
 
-		Regex reDriverParam = new Regex(@"^(P|I|D|FF|IU) --.* =(\d+)");
+		Regex reDriverParam = new Regex(@"^(P|I|D|FF|IU|CL) --.* =(\d+)");
 
 		Dictionary<string, int> driverParams = new Dictionary<string, int>()
 		{
@@ -376,6 +376,7 @@ namespace S42B_terminal
 			{"D", 0 },
 			{"FF", 0 },
 			{"IU", 0 },
+			{"CL", 1 },
 		};
 
 		int sbDriverReadPtr = 0;
@@ -494,6 +495,14 @@ namespace S42B_terminal
 								| binaryBuffer[5 + 20] << 16
 								| binaryBuffer[6 + 20] << 8
 								| binaryBuffer[7 + 20] << 0;
+
+
+							if (expectedLen - 6 >= 6 * 4 + 1 * 2)
+							{
+								tp.Current =
+									  binaryBuffer[4 + 24] << 8
+									| binaryBuffer[5 + 24] << 0;
+							}
 
 
 							bool log = false;
