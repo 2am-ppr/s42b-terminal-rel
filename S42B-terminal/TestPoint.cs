@@ -22,8 +22,10 @@ namespace S42B_terminal
 
 		public int Current { get; set; }
 
+		public int Commutation { get; set; }
+
 		public static string TSVHeader =>
-			"time\tPosMeasured\tPosTarget\tPosError\tVelMeasured\tVelTarget\tVelError\tPidI\tCurrent";
+			"time\tPosMeasured\tPosTarget\tPosError\tVelMeasured\tVelTarget\tVelError\tPidI\tCurrent\tCommutation";
 
 		public string ToTSV()
 		{
@@ -35,7 +37,8 @@ namespace S42B_terminal
 					+ "{5}\t"
 					+ "{6}\t"
 					+ "{7}\t"
-					+ "{8}",
+					+ "{8}\t"
+					+ "{9}",
 				Sequence,
 				PosMeasured,
 				PosTarget,
@@ -44,7 +47,8 @@ namespace S42B_terminal
 				VelTarget,
 				VelError,
 				PidI,
-				Current);
+				Current,
+				Commutation);
 	}
 	}
 
