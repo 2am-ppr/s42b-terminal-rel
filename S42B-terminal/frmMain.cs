@@ -504,6 +504,14 @@ namespace S42B_terminal
 									| binaryBuffer[5 + 24] << 0;
 							}
 
+							if (expectedLen - 6 >= 6 * 4 + 2 * 2)
+							{
+								tp.Commutation =
+									(short)(
+									  binaryBuffer[4 + 26] << 8
+									| binaryBuffer[5 + 26] << 0);
+							}
+
 
 							bool log = false;
 							if (Math.Abs(tp.PosError) > 3 || Math.Abs(tp.PidI) > 2000)

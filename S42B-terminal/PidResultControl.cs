@@ -106,9 +106,9 @@ namespace S42B_terminal
 				x.Sequence -= startSeq;
 			}
 
-			var colors = new[] { "0072bd", "f95319", "edb120", "9e2ffe", "77ac30", "4dbeee", "a2142f", "00cc00" };
+			var colors = new[] { "0072bd", "f95319", "edb120", "9e2ffe", "77ac30", "4dbeee", "a2142f", "00cc00", "dd0000" };
 
-			foreach (var field in new[] { "PosMeasured", "PosTarget", "PosError", "VelMeasured", "VelTarget", "VelError", "PidI", "Current" })
+			foreach (var field in new[] { "PosMeasured", "PosTarget", "PosError", "VelMeasured", "VelTarget", "VelError", "PidI", "Current", "Commutation" })
 			{
 
 				var series = new LineSeries()
@@ -126,6 +126,7 @@ namespace S42B_terminal
 			(model.Series[2] as LineSeries).YAxisKey = "posError";
 			(model.Series[5] as LineSeries).YAxisKey = "velError";
 			(model.Series[7] as LineSeries).YAxisKey = "posError";
+			(model.Series[8] as LineSeries).YAxisKey = "posError";
 
 			for (int i = 0; i < model.Series.Count; i++)
 			{
