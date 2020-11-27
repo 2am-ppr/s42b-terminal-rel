@@ -77,7 +77,7 @@ namespace S42B_terminal
 			try
 			{
 				ManagementObjectSearcher searcher =
-					new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_PnPEntity WHERE pnpclass = 'ports' AND name LIKE '%(COM%'");
+					new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_PnPEntity WHERE ClassGuid='{4d36e978-e325-11ce-bfc1-08002be10318}' AND Name LIKE '%(COM%'");
 
 				foreach (ManagementObject queryObj in searcher.Get())
 				{
