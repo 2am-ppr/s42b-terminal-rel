@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Deployment.Application;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -68,6 +69,8 @@ namespace S42B_terminal
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
+			if (ApplicationDeployment.IsNetworkDeployed)
+				this.Text = "S42B Terminal " + ApplicationDeployment.CurrentDeployment.CurrentVersion;
 
 			cmbCommand.DataSource = commands;
 			cmbCommand.DisplayMember = "Caption";
